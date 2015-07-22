@@ -27,6 +27,15 @@
     <ClInclude Include="google\protobuf\unittest_import_public_lite.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\map_lite_test_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\arena_test_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\map_lite_unittest.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\lite_unittest.cc">
@@ -44,10 +53,24 @@
     <ClCompile Include="google\protobuf\unittest_import_public_lite.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\map_lite_test_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\arena_test_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="google\protobuf\map_lite_unittest.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="google\protobuf\unittest_no_arena_lite.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\src\google\protobuf\unittest_lite.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_import_lite.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_import_public_lite.proto" />
+    <CustomBuild Include="..\src\google\protobuf\map_lite_unittest.proto" />
+    <CustomBuild Include="..\src\google\protobuf\unittest_no_arena_lite.proto" />
   </ItemGroup>
 </Project>
