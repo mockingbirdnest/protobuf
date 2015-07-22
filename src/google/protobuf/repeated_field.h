@@ -545,8 +545,14 @@ class GenericTypeHandler {
   // constructors and destructors. Note that the GOOGLE_ATTRIBUTE_NOINLINE macro
   // requires the 'inline' storage class here, which is somewhat confusing, but
   // the compiler does the right thing.
-  static inline GenericType* NewFromPrototype(const GenericType* prototype,
-                                              ::google::protobuf::Arena* arena = NULL)
+  static
+#if defined(_MSC_VER) && (_MSC_VER >= 1900)
+    __declspec(noinline)
+#else
+    inline
+#endif
+    GenericType* NewFromPrototype(const GenericType* prototype,
+                                  ::google::protobuf::Arena* arena = NULL)
     GOOGLE_ATTRIBUTE_NOINLINE {
     return New(arena);
   }
