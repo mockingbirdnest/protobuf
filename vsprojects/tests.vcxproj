@@ -1,53 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4DF72760-C055-40A5-A77E-30A17E2AC2DB}</ProjectGuid>
     <RootNamespace>tests</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="google_test_framework.props" />
+    <Import Project="portability_macros.props" />
+    <Import Project="google_googletest.props" />
+    <Import Project="google_googlemock_main.props" />
+    <Import Project="google_glog.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="portability_macros.props" />
+    <Import Project="google_googletest.props" />
+    <Import Project="google_googlemock_main.props" />
+    <Import Project="google_glog.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="google_test_framework.props" />
+    <Import Project="portability_macros.props" />
+    <Import Project="google_googletest.props" />
+    <Import Project="google_googlemock_main.props" />
+    <Import Project="google_glog.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="portability_macros.props" />
+    <Import Project="google_googletest.props" />
+    <Import Project="google_googlemock_main.props" />
+    <Import Project="google_glog.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>Debug\</OutDir>
-    <IntDir>$(OutDir)$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(SolutionDir)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>Release\</OutDir>
-    <IntDir>$(OutDir)$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(SolutionDir)$(Configuration)\$(Platform)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)$(Configuration)\$(Platform)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <CustomBuildStep>
@@ -72,6 +119,30 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <ClCompile>
+      <AdditionalOptions>/wd4244 /wd4267 /wd4018 /wd4355 /wd4800 /wd4251 /wd4996 /wd4146 /wd4305 /bigobj %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../src;.;../gtest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <CustomBuildStep>
       <Message />
@@ -94,35 +165,77 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CustomBuildStep>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <ClCompile>
+      <AdditionalOptions>/wd4244 /wd4267 /wd4018 /wd4355 /wd4800 /wd4251 /wd4996 /wd4146 /wd4305 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>../src;.;../gtest/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\google\protobuf\arena_test_util.h" />
+    <ClInclude Include="..\src\google\protobuf\compiler\cpp\cpp_unittest.h" />
     <ClInclude Include="..\src\google\protobuf\compiler\mock_code_generator.h" />
+    <ClInclude Include="..\src\google\protobuf\map_test_util.h" />
     <ClInclude Include="..\src\google\protobuf\testing\file.h" />
     <ClInclude Include="..\src\google\protobuf\testing\googletest.h" />
     <ClInclude Include="..\src\google\protobuf\test_util.h" />
+    <ClInclude Include="google\protobuf\any_test.pb.h" />
     <ClInclude Include="google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.h" />
+    <ClInclude Include="google\protobuf\map_proto2_unittest.pb.h" />
+    <ClInclude Include="google\protobuf\map_unittest.pb.h" />
     <ClInclude Include="google\protobuf\unittest.pb.h" />
+    <ClInclude Include="google\protobuf\unittest_arena.pb.h" />
     <ClInclude Include="google\protobuf\unittest_custom_options.pb.h" />
+    <ClInclude Include="google\protobuf\unittest_drop_unknown_fields.pb.h" />
     <ClInclude Include="google\protobuf\unittest_embed_optimize_for.pb.h" />
+    <ClInclude Include="google\protobuf\unittest_empty.pb.h" />
+    <ClInclude Include="google\protobuf\unittest_enormous_descriptor.pb.h" />
     <ClInclude Include="google\protobuf\unittest_import.pb.h" />
     <ClInclude Include="google\protobuf\unittest_import_public.pb.h" />
-    <ClInclude Include="google\protobuf\unittest_lite_imports_nonline.pb.h" />
     <ClInclude Include="google\protobuf\unittest_mset.pb.h" />
+    <ClInclude Include="google\protobuf\unittest_no_arena.pb.h" />
+    <ClInclude Include="google\protobuf\unittest_no_field_presence.pb.h" />
     <ClInclude Include="google\protobuf\unittest_no_generic_services.pb.h" />
     <ClInclude Include="google\protobuf\unittest_optimize_for.pb.h" />
+    <ClInclude Include="google\protobuf\unittest_preserve_unknown_enum2.pb.h" />
+    <ClInclude Include="google\protobuf\unknown_enum_test.pb.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\google\protobuf\any_test.cc" />
     <ClCompile Include="..\src\google\protobuf\arenastring_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\arena_test_util.cc" />
     <ClCompile Include="..\src\google\protobuf\arena_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\command_line_interface_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\cpp\cpp_bootstrap_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\cpp\cpp_plugin_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\cpp\cpp_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_generator_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\importer_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_doc_comment_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_plugin_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\mock_code_generator.cc" />
+    <ClCompile Include="..\src\google\protobuf\compiler\objectivec\objectivec_helpers_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\parser_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\python\python_plugin_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\compiler\ruby\ruby_generator_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\descriptor_database_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\descriptor_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\drop_unknown_fields_test.cc" />
@@ -155,9 +268,10 @@
     <ClCompile Include="..\src\google\protobuf\test_util.cc" />
     <ClCompile Include="..\src\google\protobuf\text_format_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\unknown_field_set_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\well_known_types_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\wire_format_unittest.cc" />
+    <ClCompile Include="google\protobuf\any_test.pb.cc" />
     <ClCompile Include="google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.cc" />
-    <ClCompile Include="google\protobuf\map_lite_unittest.pb.cc" />
     <ClCompile Include="google\protobuf\map_proto2_unittest.pb.cc" />
     <ClCompile Include="google\protobuf\map_unittest.pb.cc" />
     <ClCompile Include="google\protobuf\unittest.pb.cc" />
@@ -166,6 +280,7 @@
     <ClCompile Include="google\protobuf\unittest_drop_unknown_fields.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_embed_optimize_for.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_empty.pb.cc" />
+    <ClCompile Include="google\protobuf\unittest_enormous_descriptor.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_import.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_import_lite.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_import_public.pb.cc" />
@@ -173,206 +288,297 @@
     <ClCompile Include="google\protobuf\unittest_lite.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_lite_imports_nonlite.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_mset.pb.cc" />
+    <ClCompile Include="google\protobuf\unittest_mset_wire_format.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_no_arena.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_no_arena_import.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_no_field_presence.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_no_generic_services.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_optimize_for.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_preserve_unknown_enum.pb.cc" />
+    <ClCompile Include="google\protobuf\unittest_preserve_unknown_enum2.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_proto3_arena.pb.cc" />
+    <ClCompile Include="google\protobuf\unittest_well_known_types.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\src\google\protobuf\compiler\cpp\cpp_test_bad_identifiers.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating cpp_test_bad_identifiers.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/compiler/cpp/cpp_test_bad_identifiers.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.h;google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating cpp_test_bad_identifiers.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/compiler/cpp/cpp_test_bad_identifiers.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.h;google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.cc;%(Outputs)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="..\src\google\protobuf\map_lite_unittest.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating map_lite_unittest.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/map_lite_unittest.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\map_lite_unittest.pb.h;google\protobuf\map_lite_unittest.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating map_lite_unittest.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/map_lite_unittest.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\map_lite_unittest.pb.h;google\protobuf\map_lite_unittest.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\map_proto2_unittest.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating map_proto2_unittest.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/map_proto2_unittest.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\map_proto2_unittest.pb.h;google\protobuf\map_proto2_unittest.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating map_proto2_unittest.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/map_proto2_unittest.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\map_proto2_unittest.pb.h;google\protobuf\map_proto2_unittest.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\map_unittest.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating map_unittest.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/map_unittest.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\map_unittest.pb.h;google\protobuf\map_unittest.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating map_unittest.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/map_unittest.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\map_unittest.pb.h;google\protobuf\map_unittest.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest.pb.h;google\protobuf\unittest.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest.pb.h;google\protobuf\unittest.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_arena.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_arena.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_arena.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_arena.pb.h;google\protobuf\unittest_arena.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_arena.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_arena.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_arena.pb.h;google\protobuf\unittest_arena.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_custom_options.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_custom_options.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_custom_options.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_custom_options.pb.h;google\protobuf\unittest_custom_options.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_custom_options.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_custom_options.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_custom_options.pb.h;google\protobuf\unittest_custom_options.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_drop_unknown_fields.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_drop_unknown_fields.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_drop_unknown_fields.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_drop_unknown_fields.pb.h;google\protobuf\unittest_drop_unknown_fields.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_drop_unknown_fields.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_drop_unknown_fields.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_drop_unknown_fields.pb.h;google\protobuf\unittest_drop_unknown_fields.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_embed_optimize_for.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_embed_optimize_for.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_embed_optimize_for.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_embed_optimize_for.pb.h;google\protobuf\unittest_embed_optimize_for.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_embed_optimize_for.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_embed_optimize_for.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_embed_optimize_for.pb.h;google\protobuf\unittest_embed_optimize_for.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_empty.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_empty.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_empty.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_empty.pb.h;google\protobuf\unittest_empty.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_empty.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_empty.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_empty.pb.h;google\protobuf\unittest_empty.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_import.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_import.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_import.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_import.pb.h;google\protobuf\unittest_import.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_import.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_import.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_import.pb.h;google\protobuf\unittest_import.pb.cc;%(Outputs)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="..\src\google\protobuf\unittest_import_lite.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_import_lite.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_import_lite.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_import_lite.pb.h;google\protobuf\unittest_import_lite.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_import_lite.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_import_lite.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_import_lite.pb.h;google\protobuf\unittest_import_lite.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_import_public.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_import_public.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_import_public.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_import_public.pb.h;google\protobuf\unittest_import_public.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_import_public.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_import_public.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_import_public.pb.h;google\protobuf\unittest_import_public.pb.cc;%(Outputs)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="..\src\google\protobuf\unittest_import_public_lite.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_import_public_lite.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_import_public_lite.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_import_public_lite.pb.h;google\protobuf\unittest_import_public_lite.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_import_public_lite.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_import_public_lite.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_import_public_lite.pb.h;google\protobuf\unittest_import_public_lite.pb.cc;%(Outputs)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="..\src\google\protobuf\unittest_lite.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_lite.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_lite.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_lite.pb.h;google\protobuf\unittest_lite.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_lite.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_lite.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_lite.pb.h;google\protobuf\unittest_lite.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_lite_imports_nonlite.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_lite_imports_nonlite.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_lite_imports_nonlite.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_lite_imports_nonlite.pb.h;google\protobuf\unittest_lite_imports_nonlite.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_lite_imports_nonlite.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_lite_imports_nonlite.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_lite_imports_nonlite.pb.h;google\protobuf\unittest_lite_imports_nonlite.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_mset.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_mset.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_mset.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_mset.pb.h;google\protobuf\unittest_mset.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_mset.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_mset.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_mset.pb.h;google\protobuf\unittest_mset.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_no_arena.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_no_arena.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_no_arena.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_no_arena.pb.h;google\protobuf\unittest_no_arena.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_no_arena.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_no_arena.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_no_arena.pb.h;google\protobuf\unittest_no_arena.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_no_arena_import.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_no_arena_import.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_no_arena_import.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_no_arena_import.pb.h;google\protobuf\unittest_no_arena_import.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_no_arena_import.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_no_arena_import.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_no_arena_import.pb.h;google\protobuf\unittest_no_arena_import.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_no_field_presence.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_no_field_presence.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_no_field_presence.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_no_field_presence.pb.h;google\protobuf\unittest_no_field_presence.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_no_field_presence.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_no_field_presence.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_no_field_presence.pb.h;google\protobuf\unittest_no_field_presence.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_no_generic_services.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_no_generic_services.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_no_generic_services.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_no_generic_services.pb.h;google\protobuf\unittest_no_generic_services.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_no_generic_services.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_no_generic_services.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_no_generic_services.pb.h;google\protobuf\unittest_no_generic_services.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_optimize_for.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_optimize_for.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_optimize_for.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_optimize_for.pb.h;google\protobuf\unittest_optimize_for.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_optimize_for.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_optimize_for.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_optimize_for.pb.h;google\protobuf\unittest_optimize_for.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_preserve_unknown_enum.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_preserve_unknown_enum.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_preserve_unknown_enum.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_preserve_unknown_enum.pb.h;google\protobuf\unittest_preserve_unknown_enum.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_preserve_unknown_enum.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_preserve_unknown_enum.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_preserve_unknown_enum.pb.h;google\protobuf\unittest_preserve_unknown_enum.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\unittest_proto3_arena.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating unittest_proto3_arena.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_proto3_arena.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\unittest_proto3_arena.pb.h;google\protobuf\unittest_proto3_arena.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating unittest_proto3_arena.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/unittest_proto3_arena.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\unittest_proto3_arena.pb.h;google\protobuf\unittest_proto3_arena.pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -384,6 +590,87 @@
       <Project>{b84ff31a-5f9a-46f8-ab22-dbfc9bece3be}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\src\google\protobuf\any_test.proto">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\src\google\protobuf\unittest_preserve_unknown_enum2.proto">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\src\google\protobuf\unittest_well_known_types.proto">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\google\protobuf\compiler\cpp\cpp_test_large_enum_value.proto" />
+    <None Include="..\src\google\protobuf\compiler\cpp\test_large_enum_value.proto" />
+    <None Include="..\src\google\protobuf\compiler\ruby\ruby_generated_code.proto" />
+    <None Include="..\src\google\protobuf\map_lite_unittest.proto" />
+    <CustomBuild Include="..\src\google\protobuf\unittest_enormous_descriptor.proto">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="..\src\google\protobuf\unittest_import_lite.proto" />
+    <None Include="..\src\google\protobuf\unittest_import_public_lite.proto" />
+    <None Include="..\src\google\protobuf\unittest_lite.proto" />
+    <CustomBuild Include="..\src\google\protobuf\unittest_mset_wire_format.proto">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="..\src\google\protobuf\unittest_no_arena_lite.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
