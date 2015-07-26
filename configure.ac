@@ -12,7 +12,7 @@ AC_PREREQ(2.59)
 # In the SVN trunk, the version should always be the next anticipated release
 # version with the "-pre" suffix.  (We used to use "-SNAPSHOT" but this pushed
 # the size of one file name in the dist tarfile over the 99-char limit.)
-AC_INIT([Protocol Buffers],[3.0.0-alpha-1],[protobuf@googlegroups.com],[protobuf])
+AC_INIT([Protocol Buffers],[3.0.0-alpha-3],[protobuf@googlegroups.com],[protobuf])
 
 AM_MAINTAINER_MODE([enable])
 
@@ -23,7 +23,7 @@ AC_CONFIG_MACRO_DIR([m4])
 AC_ARG_VAR(DIST_LANG, [language to include in the distribution package (i.e., make dist)])
 case "$DIST_LANG" in
   "") DIST_LANG=all ;;
-  all | cpp | java | python | javanano) ;;
+  all | cpp | csharp | java | python | javanano | objectivec | ruby) ;;
   *) AC_MSG_FAILURE([unknown language: $DIST_LANG]) ;;
 esac
 AC_SUBST(DIST_LANG)
@@ -37,7 +37,7 @@ AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],
 
 AC_CANONICAL_TARGET
 
-AM_INIT_AUTOMAKE([subdir-objects])
+AM_INIT_AUTOMAKE([1.9 tar-ustar subdir-objects])
 
 AC_ARG_WITH([zlib],
   [AS_HELP_STRING([--with-zlib],
@@ -54,7 +54,7 @@ AC_PROG_CC
 AC_PROG_CXX
 AC_LANG([C++])
 ACX_USE_SYSTEM_EXTENSIONS
-AM_PROG_AR
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AM_CONDITIONAL(GCC, test "$GCC" = yes)   # let the Makefile know if we're gcc
 
 # test_util.cc takes forever to compile with GCC and optimization turned on.
@@ -164,5 +164,5 @@ export CFLAGS
 export CXXFLAGS
 AC_CONFIG_SUBDIRS([gtest])
 
-AC_CONFIG_FILES([Makefile src/Makefile protobuf.pc protobuf-lite.pc])
+AC_CONFIG_FILES([Makefile src/Makefile conformance/Makefile protobuf.pc protobuf-lite.pc])
 AC_OUTPUT

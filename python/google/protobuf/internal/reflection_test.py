@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # Protocol Buffers - Google's data interchange format
@@ -40,7 +40,7 @@ import gc
 import operator
 import struct
 
-from google.apputils import basetest
+import unittest
 from google.protobuf import unittest_import_pb2
 from google.protobuf import unittest_mset_pb2
 from google.protobuf import unittest_pb2
@@ -102,7 +102,7 @@ class _MiniDecoder(object):
     return self._pos == len(self._bytes)
 
 
-class ReflectionTest(basetest.TestCase):
+class ReflectionTest(unittest.TestCase):
 
   def assertListsEqual(self, values, others):
     self.assertEqual(len(values), len(others))
@@ -1619,7 +1619,7 @@ class ReflectionTest(basetest.TestCase):
     self.assertFalse(proto.IsInitialized(errors))
     self.assertEqual(errors, ['a', 'b', 'c'])
 
-  @basetest.unittest.skipIf(
+  @unittest.skipIf(
       api_implementation.Type() != 'cpp' or api_implementation.Version() != 2,
       'Errors are only available from the most recent C++ implementation.')
   def testFileDescriptorErrors(self):
@@ -1792,12 +1792,23 @@ class ReflectionTest(basetest.TestCase):
     # Just check the default value.
     self.assertEqual(57, msg.inner.value)
 
+  @unittest.skipIf(
+      api_implementation.Type() != 'cpp' or api_implementation.Version() != 2,
+      'CPPv2-specific test')
+  def testBadArguments(self):
+    # Some of these assertions used to segfault.
+    from google.protobuf.pyext import _message
+    self.assertRaises(TypeError, _message.default_pool.FindFieldByName, 3)
+    self.assertRaises(TypeError, _message.default_pool.FindExtensionByName, 42)
+    self.assertRaises(TypeError,
+                      unittest_pb2.TestAllTypes().__getattribute__, 42)
+
 
 #  Since we had so many tests for protocol buffer equality, we broke these out
 #  into separate TestCase classes.
 
 
-class TestAllTypesEqualityTest(basetest.TestCase):
+class TestAllTypesEqualityTest(unittest.TestCase):
 
   def setUp(self):
     self.first_proto = unittest_pb2.TestAllTypes()
@@ -1813,7 +1824,7 @@ class TestAllTypesEqualityTest(basetest.TestCase):
     self.assertEqual(self.first_proto, self.second_proto)
 
 
-class FullProtosEqualityTest(basetest.TestCase):
+class FullProtosEqualityTest(unittest.TestCase):
 
   """Equality tests using completely-full protos as a starting point."""
 
@@ -1899,7 +1910,7 @@ class FullProtosEqualityTest(basetest.TestCase):
     self.assertEqual(self.first_proto, self.second_proto)
 
 
-class ExtensionEqualityTest(basetest.TestCase):
+class ExtensionEqualityTest(unittest.TestCase):
 
   def testExtensionEquality(self):
     first_proto = unittest_pb2.TestAllExtensions()
@@ -1932,7 +1943,7 @@ class ExtensionEqualityTest(basetest.TestCase):
     self.assertEqual(first_proto, second_proto)
 
 
-class MutualRecursionEqualityTest(basetest.TestCase):
+class MutualRecursionEqualityTest(unittest.TestCase):
 
   def testEqualityWithMutualRecursion(self):
     first_proto = unittest_pb2.TestMutualRecursionA()
@@ -1944,7 +1955,7 @@ class MutualRecursionEqualityTest(basetest.TestCase):
     self.assertEqual(first_proto, second_proto)
 
 
-class ByteSizeTest(basetest.TestCase):
+class ByteSizeTest(unittest.TestCase):
 
   def setUp(self):
     self.proto = unittest_pb2.TestAllTypes()
@@ -2240,7 +2251,7 @@ class ByteSizeTest(basetest.TestCase):
 #   * Handling of empty submessages (with and without "has"
 #     bits set).
 
-class SerializationTest(basetest.TestCase):
+class SerializationTest(unittest.TestCase):
 
   def testSerializeEmtpyMessage(self):
     first_proto = unittest_pb2.TestAllTypes()
@@ -2791,7 +2802,7 @@ class SerializationTest(basetest.TestCase):
     self.assertEqual(3, proto.repeated_int32[2])
 
 
-class OptionsTest(basetest.TestCase):
+class OptionsTest(unittest.TestCase):
 
   def testMessageOptions(self):
     proto = unittest_mset_pb2.TestMessageSet()
@@ -2818,9 +2829,9 @@ class OptionsTest(basetest.TestCase):
 
 
 
-class ClassAPITest(basetest.TestCase):
+class ClassAPITest(unittest.TestCase):
 
-  @basetest.unittest.skipIf(
+  @unittest.skipIf(
       api_implementation.Type() == 'cpp' and api_implementation.Version() == 2,
       'C++ implementation requires a call to MakeDescriptor()')
   def testMakeClassWithNestedDescriptor(self):
@@ -2952,4 +2963,4 @@ class ClassAPITest(basetest.TestCase):
     self.assertEqual(msg.bar.baz.deep, 4)
 
 if __name__ == '__main__':
-  basetest.main()
+  unittest.main()
