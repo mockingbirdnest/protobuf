@@ -111,18 +111,22 @@
     <ClInclude Include="google\protobuf\unittest_optimize_for.pb.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\google\protobuf\any_test.cc" />
     <ClCompile Include="..\src\google\protobuf\arenastring_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\arena_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\command_line_interface_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\cpp\cpp_bootstrap_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\cpp\cpp_plugin_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\cpp\cpp_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_generator_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\importer_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_doc_comment_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_plugin_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\mock_code_generator.cc" />
+    <ClCompile Include="..\src\google\protobuf\compiler\objectivec\objectivec_helpers_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\parser_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\python\python_plugin_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\compiler\ruby\ruby_generator_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\descriptor_database_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\descriptor_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\drop_unknown_fields_test.cc" />
@@ -133,6 +137,7 @@
     <ClCompile Include="..\src\google\protobuf\io\printer_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\io\tokenizer_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\io\zero_copy_stream_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\lite_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\map_field_test.cc" />
     <ClCompile Include="..\src\google\protobuf\map_test.cc" />
     <ClCompile Include="..\src\google\protobuf\map_test_util.cc" />
@@ -140,6 +145,7 @@
     <ClCompile Include="..\src\google\protobuf\no_field_presence_test.cc" />
     <ClCompile Include="..\src\google\protobuf\preserve_unknown_enum_test.cc" />
     <ClCompile Include="..\src\google\protobuf\proto3_arena_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\proto_cast_test.cc" />
     <ClCompile Include="..\src\google\protobuf\reflection_ops_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\repeated_field_reflection_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\repeated_field_unittest.cc" />
@@ -155,6 +161,7 @@
     <ClCompile Include="..\src\google\protobuf\test_util.cc" />
     <ClCompile Include="..\src\google\protobuf\text_format_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\unknown_field_set_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\well_known_types_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\wire_format_unittest.cc" />
     <ClCompile Include="google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.cc" />
     <ClCompile Include="google\protobuf\map_lite_unittest.pb.cc" />
@@ -183,12 +190,12 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\src\google\protobuf\compiler\cpp\cpp_test_bad_identifiers.proto">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating cpp_test_bad_identifiers.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\protoc -I../src --cpp_out=. ../src/google/protobuf/compiler/cpp/cpp_test_bad_identifiers.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.h;google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.cc;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating cpp_test_bad_identifiers.pb.{h,cc}...</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\protoc -I../src --cpp_out=. ../src/google/protobuf/compiler/cpp/cpp_test_bad_identifiers.proto</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.h;google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.cc;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\protoc -I../src --cpp_out=. %(FullPath)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\protoc -I../src --cpp_out=. %(FullPath)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\src\google\protobuf\map_lite_unittest.proto">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating map_lite_unittest.pb.{h,cc}...</Message>
@@ -384,6 +391,19 @@
       <Project>{b84ff31a-5f9a-46f8-ab22-dbfc9bece3be}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\src\google\protobuf\any_test.proto">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\protoc -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\protoc -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="..\src\google\protobuf\unittest_preserve_unknown_enum2.proto" />
+    <None Include="..\src\google\protobuf\unittest_well_known_types.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -93,13 +93,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\google\protobuf\arena_test_util.h" />
+    <ClInclude Include="..\src\google\protobuf\map_lite_test_util.h" />
     <ClInclude Include="..\src\google\protobuf\test_util_lite.h" />
     <ClInclude Include="google\protobuf\unittest_import_lite.pb.h" />
     <ClInclude Include="google\protobuf\unittest_import_public_lite.pb.h" />
     <ClInclude Include="google\protobuf\unittest_lite.pb.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\google\protobuf\arena_test_util.cc" />
     <ClCompile Include="..\src\google\protobuf\lite_unittest.cc" />
+    <ClCompile Include="..\src\google\protobuf\map_lite_test_util.cc" />
     <ClCompile Include="..\src\google\protobuf\test_util_lite.cc" />
     <ClCompile Include="google\protobuf\unittest_import_lite.pb.cc" />
     <ClCompile Include="google\protobuf\unittest_import_public_lite.pb.cc" />

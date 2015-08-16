@@ -266,6 +266,27 @@
     <ClCompile Include="google\protobuf\unittest_proto3_arena.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\any_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\lite_unittest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\proto_cast_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\well_known_types_unittest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_generator_unittest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\compiler\objectivec\objectivec_helpers_unittest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\compiler\ruby\ruby_generator_unittest.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\src\google\protobuf\map_lite_unittest.proto" />
@@ -292,5 +313,10 @@
     <CustomBuild Include="..\src\google\protobuf\unittest_preserve_unknown_enum.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_proto3_arena.proto" />
     <CustomBuild Include="..\src\google\protobuf\compiler\cpp\cpp_test_bad_identifiers.proto" />
+    <CustomBuild Include="..\src\google\protobuf\any_test.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\google\protobuf\unittest_preserve_unknown_enum2.proto" />
+    <None Include="..\src\google\protobuf\unittest_well_known_types.proto" />
   </ItemGroup>
 </Project>
