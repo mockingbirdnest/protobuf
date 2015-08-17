@@ -1,53 +1,8 @@
-# autogen.sh-generated files
-Makefile.in
-src/Makefile.in
-config.guess
-config.h.in
-config.sub
-configure
-depcomp
-install-sh
-ltmain.sh
-missing
-
-aclocal.m4
-m4/libtool.m4
-m4/ltoptions.m4
-m4/ltsugar.m4
-m4/ltversion.m4
-m4/lt~obsolete.m4
-autom4te.cache
-
-# downloaded files
-gtest
-
-# in-tree configure-generated files
-Makefile
-src/Makefile
-/config.h
-config.log
-config.status
-pbconfig.h
-
-libtool
-protobuf-lite.pc
-protobuf.pc
-.deps
-stamp-h1
-
-# in-tree build products
-*.o
-*.lo
-*.la
-src/.libs
-*.so
-
-.dirstamp
-
 any_test.pb.*
 map*unittest.pb.*
 unittest*.pb.*
 cpp_test*.pb.*
+unknown_enum_test.pb.*
 
 *.pyc
 *.egg-info
@@ -104,11 +59,11 @@ conformance/conformance.pb.cc
 conformance/conformance.pb.h
 conformance/protoc_middleman
 
-# Windows junk files
+# OS Files
 [Tt]humbs.db
 *.DS_Store
 
-# Visual Studio files
+# Visual Studio Files
 *.[Oo]bj
 *.user
 *.aps
@@ -135,7 +90,3 @@ ipch/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
-
-# Generated files
-*.pb.h
-*.pb.cc
