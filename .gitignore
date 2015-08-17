@@ -135,3 +135,7 @@ ipch/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
+
+# Generated files
+*.pb.h
+*.pb.cc

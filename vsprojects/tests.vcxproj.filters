@@ -45,9 +45,6 @@
     <ClInclude Include="google\protobuf\unittest_import_public.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="google\protobuf\unittest_lite_imports_nonline.pb.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="google\protobuf\unittest_mset.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -55,6 +52,42 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="google\protobuf\unittest_no_generic_services.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\arena_test_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\map_test_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_preserve_unknown_enum2.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\any_test.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\map_proto2_unittest.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\map_unittest.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_arena.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_drop_unknown_fields.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_empty.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_no_arena.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_no_field_presence.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\unknown_enum_test.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -197,9 +230,6 @@
     <ClCompile Include="google\protobuf\compiler\cpp\cpp_test_bad_identifiers.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="google\protobuf\map_lite_unittest.pb.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="google\protobuf\map_proto2_unittest.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -269,9 +299,6 @@
     <ClCompile Include="..\src\google\protobuf\any_test.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\lite_unittest.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\google\protobuf\proto_cast_test.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -287,9 +314,20 @@
     <ClCompile Include="..\src\google\protobuf\compiler\ruby\ruby_generator_unittest.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="google\protobuf\any_test.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="google\protobuf\unittest_well_known_types.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\arena_test_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="google\protobuf\unittest_preserve_unknown_enum2.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\src\google\protobuf\map_lite_unittest.proto" />
     <CustomBuild Include="..\src\google\protobuf\map_proto2_unittest.proto" />
     <CustomBuild Include="..\src\google\protobuf\map_unittest.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest.proto" />
@@ -298,12 +336,9 @@
     <CustomBuild Include="..\src\google\protobuf\unittest_drop_unknown_fields.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_embed_optimize_for.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_empty.proto" />
-    <CustomBuild Include="..\src\google\protobuf\unittest_import_lite.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_import.proto" />
-    <CustomBuild Include="..\src\google\protobuf\unittest_import_public_lite.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_import_public.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_lite_imports_nonlite.proto" />
-    <CustomBuild Include="..\src\google\protobuf\unittest_lite.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_mset.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_no_arena_import.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_no_arena.proto" />
@@ -317,5 +352,11 @@
     <CustomBuild Include="..\src\google\protobuf\unittest_preserve_unknown_enum2.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_well_known_types.proto" />
     <CustomBuild Include="..\src\google\protobuf\unknown_enum_test.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\google\protobuf\map_lite_unittest.proto" />
+    <None Include="..\src\google\protobuf\unittest_import_lite.proto" />
+    <None Include="..\src\google\protobuf\unittest_import_public_lite.proto" />
+    <None Include="..\src\google\protobuf\unittest_lite.proto" />
   </ItemGroup>
 </Project>
