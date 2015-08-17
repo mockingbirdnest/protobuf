@@ -28,11 +28,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <google/protobuf/util/proto_cast.h>
+#include <google/protobuf/proto_cast.h>
 
-#include <google/protobuf/util/unknown_enum_test.pb.h>
+#include <google/protobuf/unknown_enum_test.pb.h>
 #include <gtest/gtest.h>
-#include <google/protobuf/testing/gmock.h>
+#include <gtest/gtest.h>
 
 namespace google {
 using google::protobuf::util::UpRevision;
