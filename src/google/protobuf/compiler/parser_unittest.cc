@@ -2120,8 +2120,8 @@ class SourceInfoTest : public ParserTest {
 
   bool HasSpanWithComment(
       char start_marker, char end_marker, const Message& descriptor_proto,
-                          const FieldDescriptor* field, int index,
-                          const char* expected_leading_comments,
+      const FieldDescriptor* field, int index,
+      const char* expected_leading_comments,
       const char* expected_trailing_comments,
       const char* expected_leading_detached_comments) {
     pair<SpanMap::iterator, SpanMap::iterator> range =
