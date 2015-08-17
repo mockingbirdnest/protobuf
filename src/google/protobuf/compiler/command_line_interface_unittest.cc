@@ -310,6 +310,7 @@ void CommandLineInterfaceTest::Run(const string& command) {
       ".libs/test_plugin.exe",  // Win32 w/autotool (Cygwin / MinGW)
       "test_plugin.exe",        // Other Win32 (MSVC)
       "test_plugin",            // Unix
+      SOLUTION_DIR CONFIGURATION "\\test_plugin.exe",
     };
 
     string plugin_path;
