@@ -326,6 +326,9 @@
     <ClCompile Include="google\protobuf\unittest_preserve_unknown_enum2.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="google\protobuf\unknown_enum_test.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\src\google\protobuf\map_proto2_unittest.proto" />
