@@ -70,13 +70,22 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\google\protobuf\any.h" />
+    <ClInclude Include="..\src\google\protobuf\any.pb.h" />
+    <ClInclude Include="..\src\google\protobuf\arena.h" />
+    <ClInclude Include="..\src\google\protobuf\arenastring.h" />
     <ClInclude Include="..\src\google\protobuf\compiler\importer.h" />
     <ClInclude Include="..\src\google\protobuf\compiler\parser.h" />
     <ClInclude Include="..\src\google\protobuf\descriptor.h" />
     <ClInclude Include="..\src\google\protobuf\descriptor.pb.h" />
     <ClInclude Include="..\src\google\protobuf\descriptor_database.h" />
+    <ClInclude Include="..\src\google\protobuf\duration.pb.h" />
     <ClInclude Include="..\src\google\protobuf\dynamic_message.h" />
+    <ClInclude Include="..\src\google\protobuf\empty.pb.h" />
     <ClInclude Include="..\src\google\protobuf\extension_set.h" />
+    <ClInclude Include="..\src\google\protobuf\field_mask.pb.h" />
+    <ClInclude Include="..\src\google\protobuf\generated_enum_reflection.h" />
+    <ClInclude Include="..\src\google\protobuf\generated_enum_util.h" />
     <ClInclude Include="..\src\google\protobuf\generated_message_reflection.h" />
     <ClInclude Include="..\src\google\protobuf\generated_message_util.h" />
     <ClInclude Include="..\src\google\protobuf\io\coded_stream.h" />
@@ -88,12 +97,26 @@
     <ClInclude Include="..\src\google\protobuf\io\zero_copy_stream.h" />
     <ClInclude Include="..\src\google\protobuf\io\zero_copy_stream_impl.h" />
     <ClInclude Include="..\src\google\protobuf\io\zero_copy_stream_impl_lite.h" />
+    <ClInclude Include="..\src\google\protobuf\map.h" />
+    <ClInclude Include="..\src\google\protobuf\map_entry.h" />
+    <ClInclude Include="..\src\google\protobuf\map_entry_lite.h" />
+    <ClInclude Include="..\src\google\protobuf\map_field.h" />
+    <ClInclude Include="..\src\google\protobuf\map_field_inl.h" />
+    <ClInclude Include="..\src\google\protobuf\map_field_lite.h" />
+    <ClInclude Include="..\src\google\protobuf\map_type_handler.h" />
     <ClInclude Include="..\src\google\protobuf\message.h" />
     <ClInclude Include="..\src\google\protobuf\message_lite.h" />
+    <ClInclude Include="..\src\google\protobuf\metadata.h" />
+    <ClInclude Include="..\src\google\protobuf\package_info.h" />
+    <ClInclude Include="..\src\google\protobuf\proto_cast.h" />
+    <ClInclude Include="..\src\google\protobuf\reflection.h" />
     <ClInclude Include="..\src\google\protobuf\reflection_internal.h" />
     <ClInclude Include="..\src\google\protobuf\reflection_ops.h" />
     <ClInclude Include="..\src\google\protobuf\repeated_field.h" />
+    <ClInclude Include="..\src\google\protobuf\repeated_field_reflection.h" />
     <ClInclude Include="..\src\google\protobuf\service.h" />
+    <ClInclude Include="..\src\google\protobuf\source_context.pb.h" />
+    <ClInclude Include="..\src\google\protobuf\struct.pb.h" />
     <ClInclude Include="..\src\google\protobuf\stubs\atomicops.h" />
     <ClInclude Include="..\src\google\protobuf\stubs\atomicops_internals_x86_msvc.h" />
     <ClInclude Include="..\src\google\protobuf\stubs\common.h" />
@@ -108,13 +131,20 @@
     <ClInclude Include="..\src\google\protobuf\stubs\template_util.h" />
     <ClInclude Include="..\src\google\protobuf\stubs\type_traits.h" />
     <ClInclude Include="..\src\google\protobuf\text_format.h" />
+    <ClInclude Include="..\src\google\protobuf\timestamp.pb.h" />
+    <ClInclude Include="..\src\google\protobuf\type.pb.h" />
+    <ClInclude Include="..\src\google\protobuf\unknown_enum_impl.h" />
     <ClInclude Include="..\src\google\protobuf\unknown_field_set.h" />
     <ClInclude Include="..\src\google\protobuf\wire_format.h" />
     <ClInclude Include="..\src\google\protobuf\wire_format_lite.h" />
     <ClInclude Include="..\src\google\protobuf\wire_format_lite_inl.h" />
+    <ClInclude Include="..\src\google\protobuf\wrappers.pb.h" />
     <ClInclude Include="config.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\google\protobuf\any.cc" />
+    <ClCompile Include="..\src\google\protobuf\any.pb.cc" />
+    <ClCompile Include="..\src\google\protobuf\api.pb.cc" />
     <ClCompile Include="..\src\google\protobuf\arena.cc" />
     <ClCompile Include="..\src\google\protobuf\arenastring.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\importer.cc" />
@@ -122,9 +152,12 @@
     <ClCompile Include="..\src\google\protobuf\descriptor.cc" />
     <ClCompile Include="..\src\google\protobuf\descriptor.pb.cc" />
     <ClCompile Include="..\src\google\protobuf\descriptor_database.cc" />
+    <ClCompile Include="..\src\google\protobuf\duration.pb.cc" />
     <ClCompile Include="..\src\google\protobuf\dynamic_message.cc" />
+    <ClCompile Include="..\src\google\protobuf\empty.pb.cc" />
     <ClCompile Include="..\src\google\protobuf\extension_set.cc" />
     <ClCompile Include="..\src\google\protobuf\extension_set_heavy.cc" />
+    <ClCompile Include="..\src\google\protobuf\field_mask.pb.cc" />
     <ClCompile Include="..\src\google\protobuf\generated_message_reflection.cc" />
     <ClCompile Include="..\src\google\protobuf\generated_message_util.cc" />
     <ClCompile Include="..\src\google\protobuf\io\coded_stream.cc" />
@@ -141,6 +174,8 @@
     <ClCompile Include="..\src\google\protobuf\reflection_ops.cc" />
     <ClCompile Include="..\src\google\protobuf\repeated_field.cc" />
     <ClCompile Include="..\src\google\protobuf\service.cc" />
+    <ClCompile Include="..\src\google\protobuf\source_context.pb.cc" />
+    <ClCompile Include="..\src\google\protobuf\struct.pb.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\atomicops_internals_x86_gcc.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\atomicops_internals_x86_msvc.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\common.cc" />
@@ -150,9 +185,12 @@
     <ClCompile Include="..\src\google\protobuf\stubs\strutil.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\substitute.cc" />
     <ClCompile Include="..\src\google\protobuf\text_format.cc" />
+    <ClCompile Include="..\src\google\protobuf\timestamp.pb.cc" />
+    <ClCompile Include="..\src\google\protobuf\type.pb.cc" />
     <ClCompile Include="..\src\google\protobuf\unknown_field_set.cc" />
     <ClCompile Include="..\src\google\protobuf\wire_format.cc" />
     <ClCompile Include="..\src\google\protobuf\wire_format_lite.cc" />
+    <ClCompile Include="..\src\google\protobuf\wrappers.pb.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

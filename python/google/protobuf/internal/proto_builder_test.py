@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 #
 # Protocol Buffers - Google's data interchange format
 # Copyright 2008 Google Inc.  All rights reserved.
@@ -32,7 +32,8 @@
 
 """Tests for google.protobuf.proto_builder."""
 
-from google.apputils import basetest
+import collections
+import unittest
 
 from google.protobuf import descriptor_pb2
 from google.protobuf import descriptor_pool
@@ -40,13 +41,14 @@ from google.protobuf import proto_builder
 from google.protobuf import text_format
 
 
-class ProtoBuilderTest(basetest.TestCase):
+class ProtoBuilderTest(unittest.TestCase):
 
   def setUp(self):
-    self._fields = {
-        'foo': descriptor_pb2.FieldDescriptorProto.TYPE_INT64,
-        'bar': descriptor_pb2.FieldDescriptorProto.TYPE_STRING,
-        }
+    self.ordered_fields = collections.OrderedDict([
+        ('foo', descriptor_pb2.FieldDescriptorProto.TYPE_INT64),
+        ('bar', descriptor_pb2.FieldDescriptorProto.TYPE_STRING),
+        ])
+    self._fields = dict(self.ordered_fields)
 
   def testMakeSimpleProtoClass(self):
     """Test that we can create a proto class."""
@@ -58,6 +60,17 @@ class ProtoBuilderTest(basetest.TestCase):
     proto.bar = 'asdf'
     self.assertMultiLineEqual(
         'bar: "asdf"\nfoo: 12345\n', text_format.MessageToString(proto))
+
+  def testOrderedFields(self):
+    """Test that the field order is maintained when given an OrderedDict."""
+    proto_cls = proto_builder.MakeSimpleProtoClass(
+        self.ordered_fields,
+        full_name='net.proto2.python.public.proto_builder_test.OrderedTest')
+    proto = proto_cls()
+    proto.foo = 12345
+    proto.bar = 'asdf'
+    self.assertMultiLineEqual(
+        'foo: 12345\nbar: "asdf"\n', text_format.MessageToString(proto))
 
   def testMakeSameProtoClassTwice(self):
     """Test that the DescriptorPool is used."""
@@ -74,4 +87,4 @@ class ProtoBuilderTest(basetest.TestCase):
 
 
 if __name__ == '__main__':
-  basetest.main()
+  unittest.main()

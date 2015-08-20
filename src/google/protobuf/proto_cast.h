@@ -46,7 +46,7 @@ namespace google {
 template<typename NewProto,
          typename OldProto>
 NewProto proto_cast(const OldProto& old_proto) {
-  string wire_format;
+  ::std::string wire_format;
   GOOGLE_CHECK(old_proto.SerializeToString(&wire_format));
 
   NewProto new_proto;
