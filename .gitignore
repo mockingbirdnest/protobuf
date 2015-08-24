@@ -1,7 +1,54 @@
+# autogen.sh-generated files
+Makefile.in
+src/Makefile.in
+config.guess
+config.h.in
+config.sub
+configure
+depcomp
+install-sh
+ltmain.sh
+missing
+
+aclocal.m4
+m4/libtool.m4
+m4/ltoptions.m4
+m4/ltsugar.m4
+m4/ltversion.m4
+m4/lt~obsolete.m4
+autom4te.cache
+
+# downloaded files
+gmock
+
+# in-tree configure-generated files
+Makefile
+src/Makefile
+/config.h
+config.log
+config.status
+
+libtool
+protobuf-lite.pc
+protobuf.pc
+.deps
+stamp-h1
+
+# in-tree build products
+*.o
+*.lo
+*.la
+src/.libs
+*.so
+
+.dirstamp
+
 any_test.pb.*
 map*unittest.pb.*
 unittest*.pb.*
 cpp_test*.pb.*
+src/google/protobuf/util/**/*.pb.cc
+src/google/protobuf/util/**/*.pb.h
 unknown_enum_test.pb.*
 
 *.pyc
@@ -9,6 +56,7 @@ unknown_enum_test.pb.*
 *_pb2.py
 python/*.egg
 python/.eggs/
+python/.tox
 python/build/
 python/google/protobuf/compiler/
 
@@ -33,8 +81,7 @@ java/target
 javanano/target
 
 # Windows native output.
-vsprojects/Debug
-vsprojects/Release
+cmake/build
 
 # NuGet packages: we want the repository configuration, but not the
 # packages themselves.
