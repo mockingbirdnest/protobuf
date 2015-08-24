@@ -1,22 +1,24 @@
+# This file describes to Cocoapods how to integrate the Objective-C runtime into a dependent
+# project.
+# Despite this file being specific to Objective-C, it needs to be on the root of the repository.
+# Otherwise, Cocoapods gives trouble like not picking up the license file correctly, or not letting
+# dependent projects use the :git notation to refer to the library.
 Pod::Spec.new do |s|
   s.name     = 'Protobuf'
-  s.version  = '3.0.0'
+  s.version  = '3.0.0-alpha-4-pre'
   s.summary  = 'Protocol Buffers v.3 runtime library for Objective-C.'
   s.homepage = 'https://github.com/google/protobuf'
   s.license  = 'New BSD'
   s.authors  = { 'The Protocol Buffers contributors' => 'protobuf@googlegroups.com' }
 
-  s.source_files = 'objectivec/*.{h,m}', 'objectivec/google/protobuf/*.pbobjc.h', 'objectivec/google/protobuf/Descriptor.pbobjc.m'
-  # The following is a .m umbrella file, and would cause duplicate symbol
-  # definitions:
-  s.exclude_files = 'objectivec/GPBProtocolBuffers.m'
-  # The .m's of the proto Well-Known-Types under google/protobuf are #imported
-  # by GPBWellKnownTypes.m. So we can't compile them (duplicate symbols), but we
-  # need them available for the importing:
-  s.preserve_paths = 'objectivec/google/protobuf/*.pbobjc.m'
+  s.source_files = 'objectivec/GPBProtocolBuffers.{h,m}'
+  # GPBProtocolBuffers.{h,m} are umbrella files. We need Cocoapods to preserve the files imported by
+  # them.
+  s.preserve_paths = 'objectivec/*.{h,m}',
+                     'objectivec/google/protobuf/*.pbobjc.{h,m}'
   s.header_mappings_dir = 'objectivec'
 
-  s.ios.deployment_target = '6.0'
-  s.osx.deployment_target = '10.8'
+  s.ios.deployment_target = '7.1'
+  s.osx.deployment_target = '10.9'
   s.requires_arc = false
 end

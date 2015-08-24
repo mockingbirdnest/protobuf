@@ -1,9 +1,23 @@
 #!/usr/bin/env bash
 
-build_cpp() {
+# Note: travis currently does not support testing more than one language so the
+# .travis.yml cheats and claims to only be cpp.  If they add multiple language
+# support, this should probably get updated to install steps and/or
+# rvm/gemfile/jdk/etc. entries rather than manually doing the work.
+
+# .travis.yml uses matrix.exclude to block the cases where app-get can't be
+# use to install things.
+
+# For when some other test needs the C++ main build, including protoc and
+# libprotobuf.
+internal_build_cpp() {
   ./autogen.sh
   ./configure
   make -j2
+}
+
+build_cpp() {
+  internal_build_cpp
   make check -j2
   cd conformance && make test_cpp && cd ..
 }
@@ -15,6 +29,11 @@ build_cpp_distcheck() {
 }
 
 build_csharp() {
+  # Just for the conformance tests. We don't currently
+  # need to really build protoc, but it's simplest to keep with the
+  # conventions of the other builds.
+  internal_build_cpp
+
   # Install latest version of Mono
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
   echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
@@ -25,15 +44,10 @@ build_csharp() {
 
   (cd csharp/src; mono ../../nuget.exe restore)
   csharp/buildall.sh
+  cd conformance && make test_csharp && cd ..
 }
 
 use_java() {
-  if [ `uname` != "Linux" ]; then
-    # It's nontrivial to programmatically install a new JDK from the command
-    # line on OS X, so we rely on testing on Linux for Java code.
-    echo "Java not tested on OS X."
-    exit 0  # success
-  fi
   version=$1
   case "$version" in
     jdk6)
@@ -60,18 +74,14 @@ use_java() {
 
 build_java() {
   # Java build needs `protoc`.
-  ./autogen.sh
-  ./configure
-  make -j2
+  internal_build_cpp
   cd java && mvn test && cd ..
   cd conformance && make test_java && cd ..
 }
 
 build_javanano() {
   # Java build needs `protoc`.
-  ./autogen.sh
-  ./configure
-  make -j2
+  internal_build_cpp
   cd javanano && mvn test && cd ..
 }
 
@@ -101,45 +111,66 @@ build_javanano_oracle7() {
   build_javanano
 }
 
+internal_install_python_deps() {
+  sudo pip install tox
+  # Only install Python2.6 on Linux.
+  if [ $(uname -s) == "Linux" ]; then
+    sudo apt-get install -y python-software-properties # for apt-add-repository
+    sudo apt-add-repository -y ppa:fkrull/deadsnakes
+    sudo apt-get update -qq
+    sudo apt-get install -y python2.6 python2.6-dev
+  fi
+}
+
+
 build_python() {
-  ./autogen.sh
-  ./configure
-  make -j2
+  internal_build_cpp
+  internal_install_python_deps
   cd python
-  python setup.py build
-  python setup.py test
-  python setup.py sdist
-  sudo pip install virtualenv && virtualenv /tmp/protoenv && /tmp/protoenv/bin/pip install dist/*
+  # Only test Python 2.6 on Linux
+  if [ $(uname -s) == "Linux" ]; then
+    envlist=py26-python,py27-python
+  else
+    envlist=py27-python
+  fi
+  tox -e $envlist
   cd ..
 }
 
 build_python_cpp() {
-  ./autogen.sh
-  ./configure
-  make -j2
-  export   LD_LIBRARY_PATH=../src/.libs # for Linux
+  internal_build_cpp
+  internal_install_python_deps
+  export LD_LIBRARY_PATH=../src/.libs # for Linux
   export DYLD_LIBRARY_PATH=../src/.libs # for OS X
   cd python
-  python setup.py build --cpp_implementation
-  python setup.py test --cpp_implementation
-  python setup.py sdist --cpp_implementation
-  sudo pip install virtualenv && virtualenv /tmp/protoenv && /tmp/protoenv/bin/pip install dist/*
+  # Only test Python 2.6 on Linux
+  if [ $(uname -s) == "Linux" ]; then
+    envlist=py26-cpp,py27-cpp
+  else
+    envlist=py27-cpp
+  fi
+  tox -e $envlist
   cd ..
 }
 
 build_ruby19() {
+  internal_build_cpp  # For conformance tests.
   cd ruby && bash travis-test.sh ruby-1.9 && cd ..
 }
 build_ruby20() {
+  internal_build_cpp  # For conformance tests.
   cd ruby && bash travis-test.sh ruby-2.0 && cd ..
 }
 build_ruby21() {
+  internal_build_cpp  # For conformance tests.
   cd ruby && bash travis-test.sh ruby-2.1 && cd ..
 }
 build_ruby22() {
+  internal_build_cpp  # For conformance tests.
   cd ruby && bash travis-test.sh ruby-2.2 && cd ..
 }
 build_jruby() {
+  internal_build_cpp  # For conformance tests.
   cd ruby && bash travis-test.sh jruby && cd ..
 }
 

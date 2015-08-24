@@ -621,7 +621,7 @@ GenerateSingularFieldHasBits(const FieldDescriptor* field,
     // has_$name$() methods.
     vars["has_array_index"] = SimpleItoa(field->index() / 32);
     vars["has_mask"] = StrCat(strings::Hex(1u << (field->index() % 32),
-                                           strings::Hex::ZERO_PAD_8));
+                                           strings::ZERO_PAD_8));
     printer->Print(vars,
       "$inline$"
       "bool $classname$::has_$name$() const {\n"
@@ -2932,7 +2932,7 @@ GenerateMergeFromCodedStream(io::Printer* printer) {
                      "commontag", SimpleItoa(WireFormat::MakeTag(field)));
 
       if (need_label ||
-          (field->is_repeated() && !field->options().packed() && !loops)) {
+          (field->is_repeated() && !field->is_packed() && !loops)) {
         printer->Print(
             " parse_$name$:\n",
             "name", field->name());
@@ -2945,7 +2945,7 @@ GenerateMergeFromCodedStream(io::Printer* printer) {
       }
 
       printer->Indent();
-      if (field->options().packed()) {
+      if (field->is_packed()) {
         field_generator.GenerateMergeFromCodedStreamWithPacking(printer);
       } else {
         field_generator.GenerateMergeFromCodedStream(printer);
@@ -2953,7 +2953,7 @@ GenerateMergeFromCodedStream(io::Printer* printer) {
       printer->Outdent();
 
       // Emit code to parse unexpectedly packed or unpacked values.
-      if (field->is_packable() && field->options().packed()) {
+      if (field->is_packed()) {
         internal::WireFormatLite::WireType wiretype =
             WireFormat::WireTypeForFieldType(field->type());
         printer->Print("} else if (tag == $uncommontag$) {\n",
@@ -2963,7 +2963,7 @@ GenerateMergeFromCodedStream(io::Printer* printer) {
         printer->Indent();
         field_generator.GenerateMergeFromCodedStream(printer);
         printer->Outdent();
-      } else if (field->is_packable() && !field->options().packed()) {
+      } else if (field->is_packable() && !field->is_packed()) {
         internal::WireFormatLite::WireType wiretype =
             internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED;
         printer->Print("} else if (tag == $uncommontag$) {\n",
@@ -2988,7 +2988,7 @@ GenerateMergeFromCodedStream(io::Printer* printer) {
           "if (input->ExpectTag($tag$)) goto parse_loop_$name$;\n",
           "tag", SimpleItoa(WireFormat::MakeTag(field)),
           "name", field->name());
-      } else if (field->is_repeated() && !field->options().packed()) {
+      } else if (field->is_repeated() && !field->is_packed()) {
         printer->Print(
           "if (input->ExpectTag($tag$)) goto parse_$name$;\n",
           "tag", SimpleItoa(WireFormat::MakeTag(field)),
@@ -3364,7 +3364,7 @@ static string ConditionalToCheckBitmasks(const vector<uint32>& masks) {
   vector<string> parts;
   for (int i = 0; i < masks.size(); i++) {
     if (masks[i] == 0) continue;
-    string m = StrCat("0x", strings::Hex(masks[i], strings::Hex::ZERO_PAD_8));
+    string m = StrCat("0x", strings::Hex(masks[i], strings::ZERO_PAD_8));
     // Each xor evaluates to 0 if the expected bits are present.
     parts.push_back(StrCat("((_has_bits_[", i, "] & ", m, ") ^ ", m, ")"));
   }
@@ -3510,7 +3510,7 @@ GenerateByteSize(io::Printer* printer) {
         } else {
           if (HasFieldPresence(descriptor_->file())) {
             printer->Print(
-              "if (_has_bits_[$index$ / 32] & $mask$) {\n",
+              "if (_has_bits_[$index$ / 32] & $mask$u) {\n",
               "index", SimpleItoa(i),
               "mask", SimpleItoa(mask));
             printer->Indent();
@@ -3659,7 +3659,7 @@ GenerateIsInitialized(io::Printer* printer) {
         printer->Print(
           "if ((_has_bits_[$i$] & 0x$mask$) != 0x$mask$) return false;\n",
           "i", SimpleItoa(i),
-          "mask", StrCat(strings::Hex(mask, strings::Hex::ZERO_PAD_8)));
+          "mask", StrCat(strings::Hex(mask, strings::ZERO_PAD_8)));
       }
     }
   }
