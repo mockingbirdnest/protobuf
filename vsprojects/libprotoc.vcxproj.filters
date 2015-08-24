@@ -297,6 +297,15 @@
     <ClInclude Include="..\src\google\protobuf\compiler\ruby\ruby_generator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\compiler\csharp\csharp_map_field.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\compiler\csharp\csharp_names.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\compiler\csharp\csharp_wrapper_field.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\compiler\code_generator.cc">
@@ -449,9 +458,6 @@
     <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_enum_field.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_extension.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_field_base.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -483,9 +489,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_umbrella_class.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_writer.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_doc_comment.cc">
@@ -558,6 +561,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\ruby\ruby_generator.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_map_field.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\compiler\csharp\csharp_wrapper_field.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
