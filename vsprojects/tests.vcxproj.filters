@@ -93,6 +93,9 @@
     <ClInclude Include="..\src\google\protobuf\compiler\cpp\cpp_unittest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_enormous_descriptor.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\arenastring_unittest.cc">
@@ -332,6 +335,9 @@
     <ClCompile Include="google\protobuf\unknown_enum_test.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="google\protobuf\unittest_enormous_descriptor.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\src\google\protobuf\map_proto2_unittest.proto" />
@@ -358,6 +364,7 @@
     <CustomBuild Include="..\src\google\protobuf\unittest_preserve_unknown_enum2.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_well_known_types.proto" />
     <CustomBuild Include="..\src\google\protobuf\unknown_enum_test.proto" />
+    <CustomBuild Include="..\src\google\protobuf\unittest_enormous_descriptor.proto" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\google\protobuf\map_lite_unittest.proto" />
