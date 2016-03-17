@@ -666,6 +666,15 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating C++ files for %(FullPath)</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)protoc" -I..\src --cpp_out=. "%(Identity)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating C++ files for %(FullPath)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating C++ files for %(FullPath)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Directory)%(Filename).pb.h;%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
     <None Include="..\src\google\protobuf\unittest_import_lite.proto" />
     <None Include="..\src\google\protobuf\unittest_import_public_lite.proto" />
