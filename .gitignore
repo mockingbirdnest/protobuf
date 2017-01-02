@@ -180,3 +180,41 @@ ruby/Gemfile.lock
 ruby/compatibility_tests/v3.0.0/protoc
 ruby/compatibility_tests/v3.0.0/tests/generated_code_pb.rb
 ruby/compatibility_tests/v3.0.0/tests/test_import_pb.rb
+
+# Windows junk files
+[Tt]humbs.db
+*.DS_Store
+
+# Visual Studio files
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+*.vc.opendb
+*.VC.db
+ipch/
+[Oo]bj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+
+# Protobuf generated files.
+*.pb.h
+*.pb.cc
