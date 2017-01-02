@@ -322,6 +322,7 @@ void CommandLineInterfaceTest::RunWithArgs(std::vector<string> args) {
       ".libs/test_plugin.exe",  // Win32 w/autotool (Cygwin / MinGW)
       "test_plugin.exe",        // Other Win32 (MSVC)
       "test_plugin",            // Unix
+      SOLUTION_DIR CONFIGURATION "\\" PLATFORM_NAME "\\test_plugin.exe",
     };
     for (int i = 0; i < GOOGLE_ARRAYSIZE(possible_paths); i++) {
       if (access(possible_paths[i], F_OK) == 0) {
