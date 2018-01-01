@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libprotobuf", "libprotobuf.vcxproj", "{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}"
 EndProject
@@ -19,6 +19,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lite-test", "lite-test.vcxproj", "{12015ACE-42BE-4952-A5A0-44A9A46908E2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_plugin", "test_plugin.vcxproj", "{CBBD34E5-02B0-40D5-B6D8-BFEA83E18B32}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "js_embed", "js_embed.vcxproj", "{790453F4-8A78-427D-8D40-2E93716AE2E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,6 +86,14 @@ Global
 		{CBBD34E5-02B0-40D5-B6D8-BFEA83E18B32}.Release|Win32.Build.0 = Release|Win32
 		{CBBD34E5-02B0-40D5-B6D8-BFEA83E18B32}.Release|x64.ActiveCfg = Release|x64
 		{CBBD34E5-02B0-40D5-B6D8-BFEA83E18B32}.Release|x64.Build.0 = Release|x64
+		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Debug|Win32.Build.0 = Debug|Win32
+		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Debug|x64.ActiveCfg = Debug|x64
+		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Debug|x64.Build.0 = Debug|x64
+		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Release|Win32.ActiveCfg = Release|Win32
+		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Release|Win32.Build.0 = Release|Win32
+		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Release|x64.ActiveCfg = Release|x64
+		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
