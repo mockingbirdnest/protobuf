@@ -96,6 +96,15 @@
     <ClInclude Include="google\protobuf\unittest_enormous_descriptor.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_lazy_dependencies.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_lazy_dependencies_custom_option.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\protobuf\unittest_lazy_dependencies_enum.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\arenastring_unittest.cc">
@@ -335,6 +344,15 @@
     <ClCompile Include="google\protobuf\unittest_mset_wire_format.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="google\protobuf\unittest_lazy_dependencies.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="google\protobuf\unittest_lazy_dependencies_custom_option.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="google\protobuf\unittest_lazy_dependencies_enum.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\src\google\protobuf\map_proto2_unittest.proto" />
@@ -362,6 +380,8 @@
     <CustomBuild Include="..\src\google\protobuf\unittest_well_known_types.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_enormous_descriptor.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_mset_wire_format.proto" />
+    <CustomBuild Include="..\src\google\protobuf\unittest_lazy_dependencies_custom_option.proto" />
+    <CustomBuild Include="..\src\google\protobuf\unittest_lazy_dependencies_enum.proto" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\google\protobuf\map_lite_unittest.proto" />
@@ -372,5 +392,6 @@
     <None Include="..\src\google\protobuf\compiler\cpp\test_large_enum_value.proto" />
     <None Include="..\src\google\protobuf\compiler\ruby\ruby_generated_code.proto" />
     <None Include="..\src\google\protobuf\unittest_no_arena_lite.proto" />
+    <None Include="..\src\google\protobuf\unittest_lazy_dependencies.proto" />
   </ItemGroup>
 </Project>
