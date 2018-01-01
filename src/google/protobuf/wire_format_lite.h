@@ -860,7 +860,10 @@ inline uint32 WireFormatLite::ZigZagEncode32(int32 n) {
 
 inline int32 WireFormatLite::ZigZagDecode32(uint32 n) {
   // Note:  Using unsigned types prevent undefined behavior
+#pragma warning(push)
+#pragma warning(disable : 4146)
   return static_cast<int32>((n >> 1) ^ -(n & 1));
+#pragma warning(pop)
 }
 
 inline uint64 WireFormatLite::ZigZagEncode64(int64 n) {
@@ -871,7 +874,10 @@ inline uint64 WireFormatLite::ZigZagEncode64(int64 n) {
 
 inline int64 WireFormatLite::ZigZagDecode64(uint64 n) {
   // Note:  Using unsigned types prevent undefined behavior
+#pragma warning(push)
+#pragma warning(disable : 4146)
   return static_cast<int64>((n >> 1) ^ -(n & 1));
+#pragma warning(pop)
 }
 
 // String is for UTF-8 text only, but, even so, ReadString() can simply
