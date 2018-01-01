@@ -112,9 +112,6 @@
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\compiler\js\embed.cc" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\src\google\protobuf\compiler\js\embed.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
