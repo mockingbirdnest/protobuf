@@ -1,3 +1,0 @@
-In bash run:
-
-$ vsprojects/Debug/js_embed.exe src/google/protobuf/compiler/js/well_known_types/* > src/google/protobuf/compiler/js/well_known_types_embed.cc
