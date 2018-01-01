@@ -18,14 +18,6 @@ __EOF__
   exit 1
 fi
 
-if test ! -e src/Makefile; then
-  cat >&2 << __EOF__
-Could not find src/Makefile.  You must run ./configure (and perhaps
-./autogen.sh) first.
-__EOF__
-  exit 1
-fi
-
 cd src
 
 declare -a RUNTIME_PROTO_FILES=(\
@@ -59,7 +51,8 @@ while [ $# -gt 0 ]; do
   esac
   shift
 done
-TMP=$(mktemp -d)
+TMP=tmp
+mkdir ${TMP}
 echo "Updating descriptor protos..."
 while [ $CORE_PROTO_IS_CORRECT -ne 1 ]
 do
@@ -70,12 +63,7 @@ do
     PROTOC=$BOOTSTRAP_PROTOC
     BOOTSTRAP_PROTOC=""
   else
-    make $@ protoc
-    if test $? -ne 0; then
-      echo "Failed to build protoc."
-      exit 1
-    fi
-    PROTOC="./protoc"
+    PROTOC="../vsprojects/Debug/Win32/protoc.exe"
   fi
 
   $PROTOC --cpp_out=dllexport_decl=LIBPROTOBUF_EXPORT:$TMP ${RUNTIME_PROTO_FILES[@]} && \
@@ -106,18 +94,3 @@ do
   PROCESS_ROUND=$((PROCESS_ROUND + 1))
 done
 cd ..
-
-if test -x objectivec/generate_well_known_types.sh; then
-  echo "Generating messages for objc."
-  objectivec/generate_well_known_types.sh $@
-fi
-
-if test -x csharp/generate_protos.sh; then
-  echo "Generating messages for C#."
-  csharp/generate_protos.sh $@
-fi
-
-if test -x php/generate_descriptor_protos.sh; then
-  echo "Generating messages for PHP."
-  php/generate_descriptor_protos.sh $@
-fi
