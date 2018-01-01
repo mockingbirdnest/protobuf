@@ -179,6 +179,7 @@
     <ClInclude Include="..\src\google\protobuf\stubs\common.h" />
     <ClInclude Include="..\src\google\protobuf\stubs\hash.h" />
     <ClInclude Include="..\src\google\protobuf\stubs\int128.h" />
+    <ClInclude Include="..\src\google\protobuf\stubs\io_win32.h" />
     <ClInclude Include="..\src\google\protobuf\stubs\logging.h" />
     <ClInclude Include="..\src\google\protobuf\stubs\map_util.h" />
     <ClInclude Include="..\src\google\protobuf\stubs\mathlimits.h" />
@@ -258,6 +259,7 @@
     <ClCompile Include="..\src\google\protobuf\stubs\bytestream.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\common.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\int128.cc" />
+    <ClCompile Include="..\src\google\protobuf\stubs\io_win32.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\mathlimits.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\once.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\status.cc" />

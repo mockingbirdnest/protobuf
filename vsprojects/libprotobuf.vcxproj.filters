@@ -288,6 +288,9 @@
     <ClInclude Include="..\src\google\protobuf\util\time_util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\stubs\io_win32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\map_field.cc">
@@ -507,6 +510,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\util\time_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\stubs\io_win32.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
