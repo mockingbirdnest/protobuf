@@ -309,6 +309,20 @@
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_shared_code_generator.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_string_field.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_string_field_lite.cc" />
+    <CustomBuild Include="..\src\google\protobuf\compiler\js\embed.cc">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\js_embed.exe $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\any.js $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\struct.js $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\timestamp.js &gt;$(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types_embed.cc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Buiding JS embedded well-known types</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types_embed.cc</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\js_embed.exe $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\any.js $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\struct.js $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\timestamp.js &gt;$(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types_embed.cc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Buiding JS embedded well-known types</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types_embed.cc</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Configuration)\js_embed.exe $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\any.js $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\struct.js $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\timestamp.js &gt;$(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types_embed.cc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Buiding JS embedded well-known types</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types_embed.cc</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)$(Configuration)\js_embed.exe $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\any.js $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\struct.js $(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types\timestamp.js &gt;$(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types_embed.cc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Buiding JS embedded well-known types</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)..\src\google\protobuf\compiler\js\well_known_types_embed.cc</Outputs>
+    </CustomBuild>
     <ClCompile Include="..\src\google\protobuf\compiler\js\js_generator.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\js\well_known_types_embed.cc" />
     <ClCompile Include="..\src\google\protobuf\compiler\objectivec\objectivec_enum.cc" />
