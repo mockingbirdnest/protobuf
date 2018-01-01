@@ -214,7 +214,3 @@ ipch/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
-
-# Protobuf generated files.
-*.pb.h
-*.pb.cc
