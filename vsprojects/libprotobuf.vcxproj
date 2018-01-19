@@ -285,6 +285,7 @@
     <ClCompile Include="..\src\google\protobuf\util\internal\object_writer.cc" />
     <ClCompile Include="..\src\google\protobuf\util\internal\protostream_objectsource.cc" />
     <ClCompile Include="..\src\google\protobuf\util\internal\protostream_objectwriter.cc" />
+    <ClCompile Include="..\src\google\protobuf\util\internal\proto_writer.cc" />
     <ClCompile Include="..\src\google\protobuf\util\internal\type_info.cc" />
     <ClCompile Include="..\src\google\protobuf\util\internal\type_info_test_helper.cc" />
     <ClCompile Include="..\src\google\protobuf\util\internal\utility.cc" />
