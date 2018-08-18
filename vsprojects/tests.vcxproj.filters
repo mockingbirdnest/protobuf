@@ -384,12 +384,12 @@
     <CustomBuild Include="..\src\google\protobuf\unittest_lazy_dependencies_enum.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_lazy_dependencies.proto" />
     <CustomBuild Include="..\src\google\protobuf\unittest_no_arena_lite.proto" />
+    <CustomBuild Include="..\src\google\protobuf\unittest_import_lite.proto" />
+    <CustomBuild Include="..\src\google\protobuf\unittest_import_public_lite.proto" />
+    <CustomBuild Include="..\src\google\protobuf\unittest_lite.proto" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\google\protobuf\map_lite_unittest.proto" />
-    <None Include="..\src\google\protobuf\unittest_import_lite.proto" />
-    <None Include="..\src\google\protobuf\unittest_import_public_lite.proto" />
-    <None Include="..\src\google\protobuf\unittest_lite.proto" />
     <None Include="..\src\google\protobuf\compiler\cpp\cpp_test_large_enum_value.proto" />
     <None Include="..\src\google\protobuf\compiler\cpp\test_large_enum_value.proto" />
     <None Include="..\src\google\protobuf\compiler\ruby\ruby_generated_code.proto" />
