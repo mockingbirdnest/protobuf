@@ -99,9 +99,6 @@
     <ClInclude Include="..\src\google\protobuf\compiler\java\java_helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\java\java_lazy_message_field.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\google\protobuf\compiler\java\java_message.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -189,9 +186,6 @@
     <ClInclude Include="..\src\google\protobuf\compiler\java\java_enum_field_lite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\java\java_lazy_message_field_lite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\google\protobuf\compiler\java\java_map_field.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -217,42 +211,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\google\protobuf\compiler\java\java_string_field_lite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_enum.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_enum_field.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_extension.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_field.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_file.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_generator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_helpers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_map_field.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_message.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_message_field.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_params.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\google\protobuf\compiler\javanano\javanano_primitive_field.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\google\protobuf\compiler\objectivec\objectivec_enum.h">
@@ -336,6 +294,9 @@
     <ClInclude Include="..\src\google\protobuf\compiler\js\well_known_types_embed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\compiler\scc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\compiler\code_generator.cc">
@@ -410,9 +371,6 @@
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_helpers.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\java\java_lazy_message_field.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_map_field.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -435,36 +393,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_string_field.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_enum.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_enum_field.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_extension.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_field.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_file.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_generator.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_helpers.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_message.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_message_field.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_primitive_field.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\plugin.cc">
@@ -524,9 +452,6 @@
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_enum_field_lite.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\java\java_lazy_message_field_lite.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_map_field_lite.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -546,9 +471,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\java\java_string_field_lite.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\compiler\javanano\javanano_map_field.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\compiler\objectivec\objectivec_enum.cc">
@@ -620,10 +542,8 @@
     <ClCompile Include="..\src\google\protobuf\compiler\js\well_known_types_embed.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\src\google\protobuf\compiler\js\embed.cc">
+    <ClCompile Include="..\src\google\protobuf\compiler\scc.cc">
       <Filter>Source Files</Filter>
-    </CustomBuild>
+    </ClCompile>
   </ItemGroup>
 </Project>

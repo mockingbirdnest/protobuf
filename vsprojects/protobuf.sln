@@ -1,14 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27825.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libprotobuf", "libprotobuf.vcxproj", "{3E283F37-A4ED-41B7-A3E6-A2D89D131A30}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libprotoc", "libprotoc.vcxproj", "{B84FF31A-5F9A-46F8-AB22-DBFC9BECE3BE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{790453F4-8A78-427D-8D40-2E93716AE2E1} = {790453F4-8A78-427D-8D40-2E93716AE2E1}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protoc", "protoc.vcxproj", "{1738D5F6-ED1E-47E0-B2F0-456864B93C1E}"
 EndProject
@@ -22,8 +19,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lite-test", "lite-test.vcxproj", "{12015ACE-42BE-4952-A5A0-44A9A46908E2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_plugin", "test_plugin.vcxproj", "{CBBD34E5-02B0-40D5-B6D8-BFEA83E18B32}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "js_embed", "js_embed.vcxproj", "{790453F4-8A78-427D-8D40-2E93716AE2E1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libprotobuf_dynamic", "libprotobuf_dynamic.vcxproj", "{FF4B98F0-8524-4B38-86B7-4F1E57AB1181}"
 EndProject
@@ -91,14 +86,6 @@ Global
 		{CBBD34E5-02B0-40D5-B6D8-BFEA83E18B32}.Release|Win32.Build.0 = Release|Win32
 		{CBBD34E5-02B0-40D5-B6D8-BFEA83E18B32}.Release|x64.ActiveCfg = Release|x64
 		{CBBD34E5-02B0-40D5-B6D8-BFEA83E18B32}.Release|x64.Build.0 = Release|x64
-		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Debug|Win32.ActiveCfg = Debug|Win32
-		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Debug|Win32.Build.0 = Debug|Win32
-		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Debug|x64.ActiveCfg = Debug|x64
-		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Debug|x64.Build.0 = Debug|x64
-		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Release|Win32.ActiveCfg = Release|Win32
-		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Release|Win32.Build.0 = Release|Win32
-		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Release|x64.ActiveCfg = Release|x64
-		{790453F4-8A78-427D-8D40-2E93716AE2E1}.Release|x64.Build.0 = Release|x64
 		{FF4B98F0-8524-4B38-86B7-4F1E57AB1181}.Debug|Win32.ActiveCfg = Debug|Win32
 		{FF4B98F0-8524-4B38-86B7-4F1E57AB1181}.Debug|Win32.Build.0 = Debug|Win32
 		{FF4B98F0-8524-4B38-86B7-4F1E57AB1181}.Debug|x64.ActiveCfg = Debug|x64
@@ -110,5 +97,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73CA264D-D093-4D6A-AA58-40FC1B6462B0}
 	EndGlobalSection
 EndGlobal
