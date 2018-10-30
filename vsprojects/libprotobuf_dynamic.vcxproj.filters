@@ -291,6 +291,9 @@
     <ClInclude Include="..\src\google\protobuf\stubs\io_win32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\google\protobuf\implicit_weak_message.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\map_field.cc">
@@ -452,9 +455,6 @@
     <ClCompile Include="..\src\google\protobuf\arenastring.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\stubs\atomicops_internals_x86_msvc.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\google\protobuf\stubs\bytestream.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -471,9 +471,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\message_lite.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\google\protobuf\stubs\once.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\repeated_field.cc">
@@ -516,6 +513,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\google\protobuf\util\internal\proto_writer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\google\protobuf\implicit_weak_message.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

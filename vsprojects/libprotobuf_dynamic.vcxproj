@@ -158,6 +158,7 @@
     <ClInclude Include="..\src\google\protobuf\generated_enum_util.h" />
     <ClInclude Include="..\src\google\protobuf\generated_message_reflection.h" />
     <ClInclude Include="..\src\google\protobuf\generated_message_util.h" />
+    <ClInclude Include="..\src\google\protobuf\implicit_weak_message.h" />
     <ClInclude Include="..\src\google\protobuf\io\coded_stream.h" />
     <ClInclude Include="..\src\google\protobuf\io\coded_stream_inl.h" />
     <ClInclude Include="..\src\google\protobuf\io\gzip_stream.h" />
@@ -251,6 +252,7 @@
     <ClCompile Include="..\src\google\protobuf\field_mask.pb.cc" />
     <ClCompile Include="..\src\google\protobuf\generated_message_reflection.cc" />
     <ClCompile Include="..\src\google\protobuf\generated_message_util.cc" />
+    <ClCompile Include="..\src\google\protobuf\implicit_weak_message.cc" />
     <ClCompile Include="..\src\google\protobuf\io\coded_stream.cc" />
     <ClCompile Include="..\src\google\protobuf\io\gzip_stream.cc" />
     <ClCompile Include="..\src\google\protobuf\io\printer.cc" />
@@ -267,13 +269,11 @@
     <ClCompile Include="..\src\google\protobuf\service.cc" />
     <ClCompile Include="..\src\google\protobuf\source_context.pb.cc" />
     <ClCompile Include="..\src\google\protobuf\struct.pb.cc" />
-    <ClCompile Include="..\src\google\protobuf\stubs\atomicops_internals_x86_msvc.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\bytestream.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\common.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\int128.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\io_win32.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\mathlimits.cc" />
-    <ClCompile Include="..\src\google\protobuf\stubs\once.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\status.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\statusor.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\stringpiece.cc" />
