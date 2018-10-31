@@ -264,12 +264,10 @@
     <ClCompile Include="..\src\google\protobuf\repeated_field_reflection_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\repeated_field_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\common_unittest.cc" />
-    <ClCompile Include="..\src\google\protobuf\stubs\once_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\stringprintf_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\structurally_valid_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\strutil_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\stubs\template_util_unittest.cc" />
-    <ClCompile Include="..\src\google\protobuf\stubs\type_traits_unittest.cc" />
     <ClCompile Include="..\src\google\protobuf\testing\file.cc" />
     <ClCompile Include="..\src\google\protobuf\testing\googletest.cc" />
     <ClCompile Include="..\src\google\protobuf\test_util.cc" />
