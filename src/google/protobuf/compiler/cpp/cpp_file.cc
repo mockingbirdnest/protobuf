@@ -809,13 +809,6 @@ void FileGenerator::GenerateReflectionInitializationCode(io::Printer* printer) {
       "\n",
       message_generators_.size());
 
-  // Now generate the AddDescriptors() function.
-  format(
-      "::$proto_ns$::internal::DescriptorTable $1$ = {\n"
-      "  false, $init_defaults$, \n",
-      UniqueName("descriptor_table", file_, options_));
-  format.Indent();
-
   // Embed the descriptor.  We simply serialize the entire
   // FileDescriptorProto
   // and embed it as a string literal, which is parsed and built into real
@@ -825,7 +818,33 @@ void FileGenerator::GenerateReflectionInitializationCode(io::Printer* printer) {
   string file_data;
   file_proto.SerializeToString(&file_data);
 
-  {
+  if (file_data.size() > 65535) {
+    // Workaround for MSVC: "Error C1091: compiler limit: string exceeds 65535
+    // bytes in length". Declare a static array of characters rather than use
+    // a string literal. Only write 25 bytes per line.
+    static const int kBytesPerLine = 25;
+    format("const char $assign_desc_table$_char[] = {\n");
+    format.Indent();
+    for (int i = 0; i < file_data.size();) {
+      for (int j = 0; j < kBytesPerLine && i < file_data.size(); ++i, ++j) {
+        format("'$1$', ", CEscape(file_data.substr(i, 1)));
+      }
+      format("\n");
+    }
+    format("'\\0' };\n\n");
+    format.Outdent();
+  }
+
+  // Now generate the AddDescriptors() function.
+  format(
+      "::$proto_ns$::internal::DescriptorTable $1$ = {\n"
+      "  false, $init_defaults$, \n",
+      UniqueName("descriptor_table", file_, options_));
+  format.Indent();
+
+  if (file_data.size() > 65535) {
+    format("$assign_desc_table$_char");
+  } else {
     // Only write 40 bytes per line.
     static const int kBytesPerLine = 40;
     for (int i = 0; i < file_data.size(); i += kBytesPerLine) {
