@@ -146,7 +146,7 @@ struct ArenaOptions {
         max_block_size(kDefaultMaxBlockSize),
         initial_block(NULL),
         initial_block_size(0),
-        block_alloc(&::operator new),
+        block_alloc(+[](size_t size) { return ::operator new(size); }),
         block_dealloc(&internal::arena_free),
         on_arena_init(NULL),
         on_arena_reset(NULL),

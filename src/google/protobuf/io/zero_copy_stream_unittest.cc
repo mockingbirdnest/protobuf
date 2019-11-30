@@ -799,11 +799,11 @@ class MsvcDebugDisabler {
     old_mode_ = _CrtSetReportMode(_CRT_ASSERT, old_mode_);
   }
 
-  static void MyHandler(const wchar_t *expr,
-                        const wchar_t *func,
-                        const wchar_t *file,
-                        unsigned int line,
-                        uintptr_t pReserved) {
+  static void __cdecl MyHandler(const wchar_t *expr,
+                                const wchar_t *func,
+                                const wchar_t *file,
+                                unsigned int line,
+                                uintptr_t pReserved) {
     // do nothing
   }
 
