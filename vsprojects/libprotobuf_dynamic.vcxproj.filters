@@ -294,6 +294,9 @@
     <ClInclude Include="..\src\google\protobuf\implicit_weak_message.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\map_field.cc">
@@ -518,5 +521,10 @@
     <ClCompile Include="..\src\google\protobuf\implicit_weak_message.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="libprotobuf_dynamic.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
