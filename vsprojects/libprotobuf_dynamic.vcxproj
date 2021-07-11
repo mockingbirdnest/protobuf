@@ -243,6 +243,7 @@
     <ClInclude Include="..\src\google\protobuf\wire_format_lite_inl.h" />
     <ClInclude Include="..\src\google\protobuf\wrappers.pb.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\google\protobuf\any.cc" />
@@ -319,6 +320,9 @@
     <ClCompile Include="..\src\google\protobuf\wire_format.cc" />
     <ClCompile Include="..\src\google\protobuf\wire_format_lite.cc" />
     <ClCompile Include="..\src\google\protobuf\wrappers.pb.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="libprotobuf_dynamic.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
