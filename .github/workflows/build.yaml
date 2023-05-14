@@ -7,8 +7,8 @@ on:
     branches: [ '*' ]
 
 env:
-  PRINCIPIA_HEADERS_PROTOBUF src/**/*.h src/**/*.inc src/**/*.proto
-  PRINCIPIA_MSVC_PROTOBUF vsprojects
+  PRINCIPIA_HEADERS_PROTOBUF: src/**/*.h src/**/*.inc src/**/*.proto
+  PRINCIPIA_MSVC_PROTOBUF: vsprojects
 
 jobs:
   build:
