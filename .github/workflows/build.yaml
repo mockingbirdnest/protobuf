@@ -7,7 +7,7 @@ on:
     branches: [ '*' ]
 
 env:
-  PRINCIPIA_HEADERS_PROTOBUF: ['src/**/*.h', 'src/**/*.inc', 'src/**/*.proto']
+  #PRINCIPIA_HEADERS_PROTOBUF: ['src/**/*.h', 'src/**/*.inc', 'src/**/*.proto']
   PRINCIPIA_MSVC_PROTOBUF: vsprojects
 
 jobs:
@@ -43,5 +43,5 @@ jobs:
       uses: mockingbirdnest/actions/windows/upload_artifact@main
       with:
         name: protobuf
-        headers_glob: ${{ env.PRINCIPIA_HEADERS_PROTOBUF }}
+        headers_glob: ['src/**/*.h', 'src/**/*.inc', 'src/**/*.proto'] #${{ env.PRINCIPIA_HEADERS_PROTOBUF }}
         solution_directory: ${{ env.PRINCIPIA_MSVC_PROTOBUF }}
