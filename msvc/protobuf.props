@@ -67,7 +67,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)..\src;$(SolutionDir)..\third_party\utf8_range;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CallingConvention>vectorcall</CallingConvention>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4018;4068;4101;4180;4244;4267;4723;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4018;4065;4068;4101;4146;4180;4244;4267;4624;4723;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>

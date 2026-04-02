@@ -49,7 +49,7 @@ void protobuf_assumption_failed(const char* pred, const char* file, int line) {
   abort();
 }
 
-static void PrintAllCounters();
+static void __cdecl PrintAllCounters();
 static auto& CounterMap() {
   using Map = std::map<absl::string_view,
                        std::map<std::variant<int64_t, absl::string_view>,
@@ -60,7 +60,7 @@ static auto& CounterMap() {
   return *counter_map;
 }
 
-static void PrintAllCounters() {
+static void __cdecl PrintAllCounters() {
   auto& counters = CounterMap();
   if (counters.empty()) return;
   absl::FPrintF(stderr, "Protobuf debug counters:\n");

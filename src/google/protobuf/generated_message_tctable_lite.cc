@@ -1848,6 +1848,7 @@ PROTOBUF_ALWAYS_INLINE const char* TcParser::RepeatedString(
         ReportFastUtf8Error(FastDecodeTag(expected_tag), table);
         return false;
     }
+    abort();
   };
 
   auto* arena = field.GetArena();
@@ -2287,7 +2288,7 @@ const char* TcParser::MpRepeatedVarintT(PROTOBUF_TC_PARAM_DECL) {
   const uint16_t xform_val =
       is_split ? (entry.type_card & field_layout::kTvMask) : xform_val_in;
   const bool is_zigzag = xform_val == field_layout::kTvZigZag;
-  const bool is_validated_enum = xform_val & field_layout::kTvEnum;
+  const bool is_validated_enum = static_cast<bool>(xform_val & field_layout::kTvEnum);
 
   const char* ptr2 = ptr;
   uint32_t next_tag;
@@ -2399,7 +2400,7 @@ const char* TcParser::MpPackedVarintT(PROTOBUF_TC_PARAM_DECL) {
   const uint16_t xform_val =
       is_split ? (entry.type_card & field_layout::kTvMask) : xform_val_in;
   const bool is_zigzag = xform_val == field_layout::kTvZigZag;
-  const bool is_validated_enum = xform_val & field_layout::kTvEnum;
+  const bool is_validated_enum = static_cast<bool>(xform_val & field_layout::kTvEnum);
 
   void* const base = MaybeGetSplitBase(msg, is_split, table);
   auto* field = &MaybeCreateRepeatedFieldRefAt<FieldType, is_split>(
