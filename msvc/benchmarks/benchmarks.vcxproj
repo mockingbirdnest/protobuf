@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)protobuf.props" />
+  <ItemGroup>
+    <ClCompile Include="..\..\src\google\protobuf\map_probe_benchmark.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\protobuf\protobuf.vcxproj">
+      <Project>{5def5565-8b55-40b1-9835-3e724e1cf99b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

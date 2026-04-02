@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{13226013-9F27-41F8-B98F-EA671F23F7D2}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)protobuf.props" />
+  <ItemGroup>
+    <ClCompile Include="..\..\src\google\protobuf\compiler\main.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\protoc_lib\protoc_lib.vcxproj">
+      <Project>{455d97e9-47c7-46cd-ad99-725fb304d453}</Project>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
