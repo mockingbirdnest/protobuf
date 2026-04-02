@@ -7,7 +7,7 @@
 # generate.
 #
 # HINT:  Flags passed to generate_descriptor_proto.sh will be passed directly
-#   to bazel when building protoc.  This is particularly useful for passing
+#   to make when building protoc.  This is particularly useful for passing
 #   -j4 to run 4 jobs simultaneously.
 
 if test ! -e src/google/protobuf/stubs/common.h; then
@@ -23,7 +23,6 @@ cd src
 declare -a RUNTIME_PROTO_FILES=(\
   google/protobuf/any.proto \
   google/protobuf/api.proto \
-  google/protobuf/cpp_features.proto \
   google/protobuf/descriptor.proto \
   google/protobuf/duration.proto \
   google/protobuf/empty.proto \
@@ -52,7 +51,8 @@ while [ $# -gt 0 ]; do
   esac
   shift
 done
-TMP=$(mktemp -d)
+TMP=tmp
+mkdir ${TMP}
 echo "Updating descriptor protos..."
 while [ $CORE_PROTO_IS_CORRECT -ne 1 ]
 do
@@ -63,12 +63,7 @@ do
     PROTOC=$BOOTSTRAP_PROTOC
     BOOTSTRAP_PROTOC=""
   else
-    ${BAZEL:-bazel} ${BAZEL_STARTUP_FLAGS:-} build $@ //:protoc ${BAZEL_FLAGS:-}
-    if test $? -ne 0; then
-      echo "Failed to build protoc."
-      exit 1
-    fi
-    PROTOC="../bazel-bin/protoc"
+    PROTOC="../vsprojects/Debug/Win32/protoc.exe"
   fi
 
   $PROTOC --cpp_out=dllexport_decl=PROTOBUF_EXPORT:$TMP ${RUNTIME_PROTO_FILES[@]} && \
@@ -99,18 +94,3 @@ do
   PROCESS_ROUND=$((PROCESS_ROUND + 1))
 done
 cd ..
-
-if test -x objectivec/generate_well_known_types.sh; then
-  echo "Generating messages for objc."
-  objectivec/generate_well_known_types.sh $@
-fi
-
-if test -x csharp/generate_protos.sh; then
-  echo "Generating messages for C#."
-  csharp/generate_protos.sh $@
-fi
-
-if test -x php/generate_descriptor_protos.sh; then
-  echo "Generating messages for PHP."
-  php/generate_descriptor_protos.sh $@
-fi
