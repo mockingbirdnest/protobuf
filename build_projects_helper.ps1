@@ -6,7 +6,7 @@ $dir = resolve-path $args[0]
 
 $filtersheaders = "  <ItemGroup>`r`n"
 $vcxprojheaders = "  <ItemGroup>`r`n"
-Get-ChildItem "$dir\src\google\protobuf\*" -Include *.h | `
+Get-ChildItem "$dir\src\google\protobuf\*" -Include *.h -Exclude test_*.h,*test_util*.h,*_tester.h,*_unittest.h | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersheaders +=
@@ -19,9 +19,34 @@ Foreach-Object {
 $filtersheaders += "  </ItemGroup>`r`n"
 $vcxprojheaders += "  </ItemGroup>`r`n"
 
+$filtersinternal = "  <ItemGroup>`r`n"
+$vcxprojinternal = "  <ItemGroup>`r`n"
+Get-ChildItem "$dir\third_party\utf8_range\*" -Include *.h | `
+Foreach-Object {
+  $msvcrelativepath = $_.FullName -replace ".*\\third_party\\", "..\..\third_party\"
+  $filtersinternal +=
+      "    <ClInclude Include=`"$msvcrelativepath`">`r`n" +
+      "       <Filter>Internal Files</Filter>`r`n" +
+      "    </ClInclude>`r`n"
+  $vcxprojinternal +=
+      "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
+}
+Get-ChildItem "$dir\third_party\utf8_range\*" -Include *.c -Exclude main.c | `
+Foreach-Object {
+  $msvcrelativepath = $_.FullName -replace ".*\\third_party\\", "..\..\third_party\"
+  $filtersinternal +=
+      "    <ClCompile Include=`"$msvcrelativepath`">`r`n" +
+      "       <Filter>Internal Files</Filter>`r`n" +
+      "    </ClCompile>`r`n"
+  $vcxprojinternal +=
+      "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
+}
+$filtersinternal += "  </ItemGroup>`r`n"
+$vcxprojinternal += "  </ItemGroup>`r`n"
+
 $filterssources = "  <ItemGroup>`r`n"
 $vcxprojsources = "  <ItemGroup>`r`n"
-Get-ChildItem "$dir\src\google\protobuf\*" -Include *.cc | `
+Get-ChildItem "$dir\src\google\protobuf\*" -Include *.cc -Exclude *test_util*.cc,*_test.cc,*_benchmark.cc,*_tester.cc,*_unittest.cc | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filterssources +=
@@ -52,7 +77,7 @@ $vcxprojprotoc += "  </ItemGroup>`r`n"
 $dirfilterspath = [string]::format("{0}/protobuf_vcxproj_filters.txt", $dir)
 [system.io.file]::writealltext(
     $dirfilterspath,
-    $filtersheaders + $filterssources,
+    $filtersheaders + $filtersinternal + $filterssources,
     [system.text.encoding]::utf8)
 
 $protocfilterspath = [string]::format("{0}/protoc_vcxproj_filters.txt", $dir)
@@ -64,7 +89,7 @@ $protocfilterspath = [string]::format("{0}/protoc_vcxproj_filters.txt", $dir)
 $dirvcxprojpath = [string]::format("{0}/protobuf_vcxproj.txt", $dir)
 [system.io.file]::writealltext(
     $dirvcxprojpath,
-    $vcxprojheaders + $vcxprojsources,
+    $vcxprojheaders + $vcxprojinternal + $vcxprojsources,
     [system.text.encoding]::utf8)
 
 $protocvcxprojpath = [string]::format("{0}/protoc_vcxproj.txt", $dir)

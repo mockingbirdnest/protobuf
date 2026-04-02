@@ -64,7 +64,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\src;$(SolutionDir)..\third_party\utf8_range;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CallingConvention>vectorcall</CallingConvention>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4018;4068;4101;4180;4244;4267;4723;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -123,6 +123,7 @@
     <Import Project="$(SolutionDir)google_abseil-cpp.props" />
     <Import Project="$(SolutionDir)google_googlemock_main.props" />
     <Import Project="$(SolutionDir)google_googletest.props" />
+    <Import Project="$(SolutionDir)google_re2.props" />
   </ImportGroup>
 
   <ImportGroup Condition="$(PrincipiaBenchmarkProject)">
