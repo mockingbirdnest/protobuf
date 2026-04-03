@@ -169,7 +169,7 @@ struct NodeBase {
   const void* GetVoidKey() const { return this + 1; }
 };
 
-constexpr size_t kGlobalEmptyTableSize = 1;
+inline constexpr size_t kGlobalEmptyTableSize = 1;
 PROTOBUF_EXPORT extern NodeBase* const kGlobalEmptyTable[kGlobalEmptyTableSize];
 
 class UntypedMapBase;
