@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37027.9
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "benchmarks", "benchmarks\benchmarks.vcxproj", "{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protobuf", "protobuf\protobuf.vcxproj", "{5DEF5565-8B55-40B1-9835-3E724E1CF99B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protoc", "protoc\protoc.vcxproj", "{13226013-9F27-41F8-B98F-EA671F23F7D2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "benchmarks", "benchmarks\benchmarks.vcxproj", "{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protoc_lib", "protoc_lib\protoc_lib.vcxproj", "{455D97E9-47C7-46CD-AD99-725FB304D453}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protoc_tests", "protoc_tests\protoc_tests.vcxproj", "{0B2A790D-72F7-424E-9F23-E72E24B865E2}"
 EndProject
@@ -17,6 +19,10 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Debug|x64.ActiveCfg = Debug|x64
+		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Debug|x64.Build.0 = Debug|x64
+		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Release|x64.ActiveCfg = Release|x64
+		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Release|x64.Build.0 = Release|x64
 		{5DEF5565-8B55-40B1-9835-3E724E1CF99B}.Debug|x64.ActiveCfg = Debug|x64
 		{5DEF5565-8B55-40B1-9835-3E724E1CF99B}.Debug|x64.Build.0 = Debug|x64
 		{5DEF5565-8B55-40B1-9835-3E724E1CF99B}.Release|x64.ActiveCfg = Release|x64
@@ -25,10 +31,10 @@ Global
 		{13226013-9F27-41F8-B98F-EA671F23F7D2}.Debug|x64.Build.0 = Debug|x64
 		{13226013-9F27-41F8-B98F-EA671F23F7D2}.Release|x64.ActiveCfg = Release|x64
 		{13226013-9F27-41F8-B98F-EA671F23F7D2}.Release|x64.Build.0 = Release|x64
-		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Debug|x64.ActiveCfg = Debug|x64
-		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Debug|x64.Build.0 = Debug|x64
-		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Release|x64.ActiveCfg = Release|x64
-		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Release|x64.Build.0 = Release|x64
+		{455D97E9-47C7-46CD-AD99-725FB304D453}.Debug|x64.ActiveCfg = Debug|x64
+		{455D97E9-47C7-46CD-AD99-725FB304D453}.Debug|x64.Build.0 = Debug|x64
+		{455D97E9-47C7-46CD-AD99-725FB304D453}.Release|x64.ActiveCfg = Release|x64
+		{455D97E9-47C7-46CD-AD99-725FB304D453}.Release|x64.Build.0 = Release|x64
 		{0B2A790D-72F7-424E-9F23-E72E24B865E2}.Debug|x64.ActiveCfg = Debug|x64
 		{0B2A790D-72F7-424E-9F23-E72E24B865E2}.Debug|x64.Build.0 = Debug|x64
 		{0B2A790D-72F7-424E-9F23-E72E24B865E2}.Release|x64.ActiveCfg = Release|x64

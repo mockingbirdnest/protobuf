@@ -116,7 +116,7 @@ Foreach-Object {
   $vcxprojprotoc +=
       "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include *.cc ` -Exclude (@("main_no*.cc") + $exclusionpattern) | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include *.cc ` -Exclude (@("main*.cc") + $exclusionpattern) | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersprotoc +=
@@ -168,6 +168,21 @@ Foreach-Object {
 }
 $filtersprotoc += "  </ItemGroup>`r`n"
 $vcxprojprotoc += "  </ItemGroup>`r`n"
+
+$filtersprotocmain = "  <ItemGroup>`r`n"
+$vcxprojprotocmain = "  <ItemGroup>`r`n"
+Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include main.cc | `
+Foreach-Object {
+  $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
+  $filtersprotocmain +=
+      "    <ClCompile Include=`"$msvcrelativepath`">`r`n" +
+      "       <Filter>Source Files</Filter>`r`n" +
+      "    </ClCompile>`r`n"
+  $vcxprojprotocmain +=
+      "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
+}
+$filtersprotocmain += "  </ItemGroup>`r`n"
+$vcxprojprotocmain += "  </ItemGroup>`r`n"
 
 $filtersptests = "  <ItemGroup>`r`n"
 $vcxprojptests = "  <ItemGroup>`r`n"
@@ -347,6 +362,12 @@ $protocfilterspath = [string]::format("{0}/protoc_vcxproj_filters.txt", $dir)
     $filtersprotoc,
     [system.text.encoding]::utf8)
 
+$protocmainfilterspath = [string]::format("{0}/protoc_main_vcxproj_filters.txt", $dir)
+[system.io.file]::writealltext(
+    $protocmainfilterspath,
+    $filtersprotocmain,
+    [system.text.encoding]::utf8)
+
 $ptestsfilterspath = [string]::format("{0}/protoc_tests_vcxproj_filters.txt", $dir)
 [system.io.file]::writealltext(
     $ptestsfilterspath,
@@ -369,6 +390,12 @@ $protocvcxprojpath = [string]::format("{0}/protoc_vcxproj.txt", $dir)
 [system.io.file]::writealltext(
     $protocvcxprojpath,
     $vcxprojprotoc,
+    [system.text.encoding]::utf8)
+
+$protocmainvcxprojpath = [string]::format("{0}/protoc_main_vcxproj.txt", $dir)
+[system.io.file]::writealltext(
+    $protocmainvcxprojpath,
+    $vcxprojprotocmain,
     [system.text.encoding]::utf8)
 
 $ptestsvcxprojpath = [string]::format("{0}/protoc_tests_vcxproj.txt", $dir)

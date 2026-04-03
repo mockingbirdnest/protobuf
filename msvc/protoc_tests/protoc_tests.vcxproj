@@ -5,6 +5,9 @@
     <ProjectGuid>{0B2A790D-72F7-424E-9F23-E72E24B865E2}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(SolutionDir)protobuf.props" />
+  <PropertyGroup>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+  </PropertyGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\google\protobuf\compiler\annotation_test_util.h" />
     <ClInclude Include="..\..\src\google\protobuf\compiler\command_line_interface_tester.h" />
@@ -355,7 +358,7 @@
     <ProjectReference Include="..\protobuf\protobuf.vcxproj">
       <Project>{5def5565-8b55-40b1-9835-3e724e1cf99b}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\protoc\protoc.vcxproj">
+    <ProjectReference Include="..\protoc_lib\protoc_lib.vcxproj">
       <Project>{13226013-9f27-41f8-b98f-ea671f23f7d2}</Project>
     </ProjectReference>
   </ItemGroup>

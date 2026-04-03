@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{455D97E9-47C7-46CD-AD99-725FB304D453}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)protobuf.props" />
+  <ItemGroup>
+    <ClInclude Include="..\..\src\google\protobuf\compiler\code_generator_lite.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\code_generator.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\command_line_interface.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\importer.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\notices.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\package_info.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\parser.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\plugin.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\plugin.pb.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\retention.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\scc.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\subprocess.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\versions.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\zip_writer.h" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\code_generator_lite.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\code_generator.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\command_line_interface.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\importer.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\parser.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\plugin.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\plugin.pb.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\retention.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\subprocess.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\versions.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\zip_writer.cc" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\cpp_generator.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\enum.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\extension.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\field_chunk.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\field.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\file.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\generator.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\helpers.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\ifndef_guard.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\message_layout_helper.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\message.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\names.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\namespace_printer.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\options.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\padding_optimizer.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\parse_function_generator.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\service.h" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\tracker.h" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\enum.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\extension.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_chunk.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\file.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\generator.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\helpers.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\ifndef_guard.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\message_layout_helper.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\message.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\namespace_printer.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\parse_function_generator.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\service.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\tracker.cc" />
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\field_generators\generators.h" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_generators\cord_field.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_generators\enum_field.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_generators\map_field.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_generators\message_field.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_generators\primitive_field.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_generators\string_field.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_generators\string_view_field.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\protobuf\protobuf.vcxproj">
+      <Project>{5def5565-8b55-40b1-9835-3e724e1cf99b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
