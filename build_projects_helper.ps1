@@ -3,10 +3,13 @@
 # XML may just be inserted at the right place in the project files, replacing whatever was there.
 
 $dir = resolve-path $args[0]
+$testpattern = @("fake_*.*", "mock_*.*", "test_*.*", "*test_util*.*", "*_test.*", "*_tester.*", "*unittest.*")
+$benchmarkpattern = @("*_benchmark.*")
+$exclusionpattern = $testpattern + $benchmarkpattern
 
 $filtersheaders = "  <ItemGroup>`r`n"
 $vcxprojheaders = "  <ItemGroup>`r`n"
-Get-ChildItem "$dir\src\google\protobuf\*" -Include *.h -Exclude test_*.h,*test_util*.h,*_tester.h,*unittest.h | `
+Get-ChildItem "$dir\src\google\protobuf\*" -Include *.h -Exclude $exclusionpattern | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersheaders +=
@@ -41,12 +44,52 @@ Foreach-Object {
   $vcxprojinternal +=
       "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
 }
+Get-ChildItem "$dir\src\google\protobuf\io\*" -Include *.h -Exclude $exclusionpattern | `
+Foreach-Object {
+  $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
+  $filtersinternal +=
+      "    <ClInclude Include=`"$msvcrelativepath`">`r`n" +
+      "       <Filter>Internal Files</Filter>`r`n" +
+      "    </ClInclude>`r`n"
+  $vcxprojinternal +=
+      "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
+}
+Get-ChildItem "$dir\src\google\protobuf\io\*" -Include *.cc -Exclude $exclusionpattern | `
+Foreach-Object {
+  $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
+  $filtersinternal +=
+      "    <ClCompile Include=`"$msvcrelativepath`">`r`n" +
+      "       <Filter>Internal Files</Filter>`r`n" +
+      "    </ClCompile>`r`n"
+  $vcxprojinternal +=
+      "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
+}
+Get-ChildItem "$dir\src\google\protobuf\stubs\*" -Include *.h -Exclude $exclusionpattern | `
+Foreach-Object {
+  $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
+  $filtersinternal +=
+      "    <ClInclude Include=`"$msvcrelativepath`">`r`n" +
+      "       <Filter>Internal Files</Filter>`r`n" +
+      "    </ClInclude>`r`n"
+  $vcxprojinternal +=
+      "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
+}
+Get-ChildItem "$dir\src\google\protobuf\stubs\*" -Include *.cc -Exclude $exclusionpattern | `
+Foreach-Object {
+  $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
+  $filtersinternal +=
+      "    <ClCompile Include=`"$msvcrelativepath`">`r`n" +
+      "       <Filter>Internal Files</Filter>`r`n" +
+      "    </ClCompile>`r`n"
+  $vcxprojinternal +=
+      "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
+}
 $filtersinternal += "  </ItemGroup>`r`n"
 $vcxprojinternal += "  </ItemGroup>`r`n"
 
 $filterssources = "  <ItemGroup>`r`n"
 $vcxprojsources = "  <ItemGroup>`r`n"
-Get-ChildItem "$dir\src\google\protobuf\*" -Include *.cc  -Exclude *test_util*.cc,*_test.cc,*_benchmark.cc,*_tester.cc,*unittest.cc | `
+Get-ChildItem "$dir\src\google\protobuf\*" -Include *.cc -Exclude $exclusionpattern | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filterssources +=
@@ -61,8 +104,7 @@ $vcxprojsources += "  </ItemGroup>`r`n"
 
 $filtersprotoc = "  <ItemGroup>`r`n"
 $vcxprojprotoc = "  <ItemGroup>`r`n"
-Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include *.h `
-  -Exclude main*.cc,fake_*.*,mock_*.*,test_*.*,*test_util*.*,*_benchmark.*,*_test.*,*_tester.*,*unittest.* | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include *.h -Exclude $exclusionpattern | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersprotoc +=
@@ -72,8 +114,7 @@ Foreach-Object {
   $vcxprojprotoc +=
       "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include *.cc `
-  -Exclude main*.cc,fake_*.*,mock_*.*,test_*.*,*test_util*.*,*_benchmark.*,*_test.*,*_tester.*,*unittest.* | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include *.cc ` -Exclude (@("main*.cc") + $exclusionpattern) | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersprotoc +=
@@ -83,8 +124,7 @@ Foreach-Object {
   $vcxprojprotoc +=
       "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\*" -Include *.h `
-  -Exclude fake_*.*,mock_*.*,test_*.*,*test_util*.*,*_benchmark.*,*_test.*,*_tester.*,*unittest.* | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\*" -Include *.h -Exclude $exclusionpattern | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersprotoc +=
@@ -94,8 +134,7 @@ Foreach-Object {
   $vcxprojprotoc +=
       "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\*" -Include *.cc `
-  -Exclude fake_*.*,mock_*.*,test_*.*,*test_util*.*,*_benchmark.*,*_test.*,*_tester.*,*unittest.* | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\*" -Include *.cc -Exclude $exclusionpattern | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersprotoc +=
@@ -105,8 +144,7 @@ Foreach-Object {
   $vcxprojprotoc +=
       "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\field_generators\*" -Include *.h `
-  -Exclude fake_*.*,mock_*.*,test_*.*,*test_util*.*,*_benchmark.*,*_test.*,*_tester.*,*unittest.* | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\field_generators\*" -Include *.h -Exclude $exclusionpattern | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersprotoc +=
@@ -116,8 +154,7 @@ Foreach-Object {
   $vcxprojprotoc +=
       "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\field_generators\*" -Include *.cc `
-  -Exclude fake_*.*,mock_*.*,test_*.*,*test_util*.*,*_benchmark.*,*_test.*,*_tester.*,*unittest.* | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\field_generators\*" -Include *.cc -Exclude $exclusionpattern | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersprotoc +=
