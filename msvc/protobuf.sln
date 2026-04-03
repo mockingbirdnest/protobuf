@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protoc", "protoc\protoc.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "benchmarks", "benchmarks\benchmarks.vcxproj", "{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protoc_tests", "protoc_tests\protoc_tests.vcxproj", "{0B2A790D-72F7-424E-9F23-E72E24B865E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -27,6 +29,10 @@ Global
 		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Debug|x64.Build.0 = Debug|x64
 		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Release|x64.ActiveCfg = Release|x64
 		{2C8E6DAC-FF3D-42C3-97AF-86368E457C68}.Release|x64.Build.0 = Release|x64
+		{0B2A790D-72F7-424E-9F23-E72E24B865E2}.Debug|x64.ActiveCfg = Debug|x64
+		{0B2A790D-72F7-424E-9F23-E72E24B865E2}.Debug|x64.Build.0 = Debug|x64
+		{0B2A790D-72F7-424E-9F23-E72E24B865E2}.Release|x64.ActiveCfg = Release|x64
+		{0B2A790D-72F7-424E-9F23-E72E24B865E2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
