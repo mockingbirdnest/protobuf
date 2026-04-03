@@ -10,6 +10,7 @@
 // This is a dummy code generator plugin used by
 // command_line_interface_unittest.
 
+#ifndef PRINCIPIA
 #include <stdlib.h>
 
 #include <string>
@@ -38,3 +39,4 @@ int main(int argc, char* argv[]) {
 #endif  // !_MSC_VER
   return google::protobuf::compiler::ProtobufMain(argc, argv);
 }
+#endif  // PRINCIPIA

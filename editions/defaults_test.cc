@@ -1,3 +1,5 @@
+// runfiles seems to come from some other project.
+#ifndef PRINCIPIA
 #include <string>
 
 #include "tools/cpp/runfiles/runfiles.h"
@@ -342,3 +344,4 @@ TEST_F(OverridableDefaultsTest, Edition2024) {
 }  // namespace google
 
 #include "google/protobuf/port_undef.inc"
+#endif  // PRINCIPIA

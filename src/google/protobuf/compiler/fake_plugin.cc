@@ -5,6 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
+#ifndef PRINCIPIA
 #ifdef _WIN32
 #include <fcntl.h>
 #else
@@ -46,3 +47,4 @@ int main(int argc, char* argv[]) {
   ABSL_CHECK(response.SerializeToFileDescriptor(STDOUT_FILENO));
   return 0;
 }
+#endif  // PRINCIPIA
