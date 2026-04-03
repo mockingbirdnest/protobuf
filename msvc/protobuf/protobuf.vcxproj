@@ -93,8 +93,8 @@
     <ClInclude Include="..\..\src\google\protobuf\wrappers.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\third_party\utf8_range\utf8_range.h" />
-    <ClCompile Include="..\..\third_party\utf8_range\utf8_validity.h" />
+    <ClInclude Include="..\..\third_party\utf8_range\utf8_range.h" />
+    <ClInclude Include="..\..\third_party\utf8_range\utf8_validity.h" />
     <ClCompile Include="..\..\third_party\utf8_range\lemire-avx2.c" />
     <ClCompile Include="..\..\third_party\utf8_range\lemire-neon.c" />
     <ClCompile Include="..\..\third_party\utf8_range\lemire-sse.c" />
