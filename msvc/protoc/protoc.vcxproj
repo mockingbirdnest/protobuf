@@ -73,4 +73,9 @@
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_generators\string_field.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\field_generators\string_view_field.cc" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\protobuf\protobuf.vcxproj">
+      <Project>{5def5565-8b55-40b1-9835-3e724e1cf99b}</Project>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
