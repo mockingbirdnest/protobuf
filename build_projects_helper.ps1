@@ -186,7 +186,7 @@ $vcxprojprotocmain += "  </ItemGroup>`r`n"
 
 $filtersptests = "  <ItemGroup>`r`n"
 $vcxprojptests = "  <ItemGroup>`r`n"
-Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include $testheaderspattern | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include $testheaderspattern -Exclude *.pb.h | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersptests +=
@@ -196,7 +196,7 @@ Foreach-Object {
   $vcxprojptests +=
       "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include $testsourcespattern | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\*" -Include $testsourcespattern -Exclude *.pb.cc | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersptests +=
@@ -206,7 +206,7 @@ Foreach-Object {
   $vcxprojptests +=
       "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\*" -Include $testheaderspattern | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\*" -Include $testheaderspattern -Exclude *.pb.h  | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersptests +=
@@ -216,7 +216,7 @@ Foreach-Object {
   $vcxprojptests +=
       "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\*" -Include $testsourcespattern | `
+Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\*" -Include $testsourcespattern -Exclude *.pb.cc | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersptests +=
@@ -226,7 +226,7 @@ Foreach-Object {
   $vcxprojptests +=
       "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\editions\*" -Include $testheaderspattern | `
+Get-ChildItem "$dir\editions\*" -Include $testheaderspattern -Exclude *.pb.h  | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\editions\\", "..\..\editions\"
   $filtersptests +=
@@ -236,7 +236,7 @@ Foreach-Object {
   $vcxprojptests +=
       "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\editions\*" -Include $testsourcespattern | `
+Get-ChildItem "$dir\editions\*" -Include $testsourcespattern -Exclude *.pb.cc | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\editions\\", "..\..\editions\"
   $filtersptests +=
@@ -246,7 +246,7 @@ Foreach-Object {
   $vcxprojptests +=
       "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\testing\*" -Include *.h | `
+Get-ChildItem "$dir\src\google\protobuf\testing\*" -Include *.h -Exclude *.pb.h | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersptests +=
@@ -256,7 +256,7 @@ Foreach-Object {
   $vcxprojptests +=
       "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\testing\*" -Include *.cc | `
+Get-ChildItem "$dir\src\google\protobuf\testing\*" -Include *.cc -Exclude *.pb.cc | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $filtersptests +=
@@ -269,58 +269,114 @@ Foreach-Object {
 Get-ChildItem "$dir\src\google\protobuf\*" -Include *unittest*.proto -Exclude unittest_legacy_features.proto | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
+  $msvcrelativepbhpath = $msvcrelativepath -replace "\.proto", ".pb.h"
+  $msvcrelativepbccpath = $msvcrelativepath -replace "\.proto", ".pb.cc"
   $filtersptests +=
       "     <CustomBuild Include=`"$msvcrelativepath`">`r`n" +
       "        <Filter>Proto Files</Filter>`r`n" +
       "     </CustomBuild>`r`n"
+  $filtersptests +=
+      "    <ClInclude Include=`"$msvcrelativepbhpath`">`r`n" +
+      "       <Filter>Generated Header Files</Filter>`r`n" +
+      "    </ClInclude>`r`n"
+  $filtersptests +=
+      "    <ClCompile Include=`"$msvcrelativepbccpath`">`r`n" +
+      "       <Filter>Generated Source Files</Filter>`r`n" +
+      "    </ClCompile>`r`n"
   $vcxprojptests +=
       "    <CustomBuild Include=`"$msvcrelativepath`">`r`n" +
-      "       <Command>`"`$(OutDir)protoc`" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) `"%(Identity)`"</Command>`r`n" +
+      "       <Command>`"`$(OutDir)protoc`" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src `"%(Identity)`"</Command>`r`n" +
       "       <Message>Generating C++ files for %(FullPath)</Message>`r`n" +
       "       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>`r`n" +
       "    </CustomBuild>`r`n"
+  $vcxprojptests +=
+      "    <ClInclude Include=`"$msvcrelativepbhpath`" />`r`n"
+  $vcxprojptests +=
+      "    <ClCompile Include=`"$msvcrelativepbccpath`" />`r`n"
 }
 Get-ChildItem "$dir\src\google\protobuf\compiler\cpp\*" -Include test*.proto | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
+  $msvcrelativepbhpath = $msvcrelativepath -replace "\.proto", ".pb.h"
+  $msvcrelativepbccpath = $msvcrelativepath -replace "\.proto", ".pb.cc"
   $filtersptests +=
       "     <CustomBuild Include=`"$msvcrelativepath`">`r`n" +
       "        <Filter>Proto Files</Filter>`r`n" +
       "     </CustomBuild>`r`n"
+  $filtersptests +=
+      "    <ClInclude Include=`"$msvcrelativepbhpath`">`r`n" +
+      "       <Filter>Generated Header Files</Filter>`r`n" +
+      "    </ClInclude>`r`n"
+  $filtersptests +=
+      "    <ClCompile Include=`"$msvcrelativepbccpath`">`r`n" +
+      "       <Filter>Generated Source Files</Filter>`r`n" +
+      "    </ClCompile>`r`n"
   $vcxprojptests +=
       "    <CustomBuild Include=`"$msvcrelativepath`">`r`n" +
-      "       <Command>`"`$(OutDir)protoc`" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) `"%(Identity)`"</Command>`r`n" +
+      "       <Command>`"`$(OutDir)protoc`" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src `"%(Identity)`"</Command>`r`n" +
       "       <Message>Generating C++ files for %(FullPath)</Message>`r`n" +
       "       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>`r`n" +
       "    </CustomBuild>`r`n"
+  $vcxprojptests +=
+      "    <ClInclude Include=`"$msvcrelativepbhpath`" />`r`n"
+  $vcxprojptests +=
+      "    <ClCompile Include=`"$msvcrelativepbccpath`" />`r`n"
 }
 Get-ChildItem "$dir\editions\golden\*" -Include *.proto | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\editions\\", "..\..\editions\"
+  $msvcrelativepbhpath = $msvcrelativepath -replace "\.proto", ".pb.h"
+  $msvcrelativepbccpath = $msvcrelativepath -replace "\.proto", ".pb.cc"
   $filtersptests +=
       "     <CustomBuild Include=`"$msvcrelativepath`">`r`n" +
       "        <Filter>Proto Files</Filter>`r`n" +
       "     </CustomBuild>`r`n"
+  $filtersptests +=
+      "    <ClInclude Include=`"$msvcrelativepbhpath`">`r`n" +
+      "       <Filter>Generated Header Files</Filter>`r`n" +
+      "    </ClInclude>`r`n"
+  $filtersptests +=
+      "    <ClCompile Include=`"$msvcrelativepbccpath`">`r`n" +
+      "       <Filter>Generated Source Files</Filter>`r`n" +
+      "    </ClCompile>`r`n"
   $vcxprojptests +=
       "    <CustomBuild Include=`"$msvcrelativepath`">`r`n" +
-      "       <Command>`"`$(OutDir)protoc`" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) `"%(Identity)`"</Command>`r`n" +
+      "       <Command>`"`$(OutDir)protoc`" --proto_path=..\.. -I..\.. -I..\..\src --cpp_out=..\.. `"%(Identity)`"</Command>`r`n" +
       "       <Message>Generating C++ files for %(FullPath)</Message>`r`n" +
       "       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>`r`n" +
       "    </CustomBuild>`r`n"
+  $vcxprojptests +=
+      "    <ClInclude Include=`"$msvcrelativepbhpath`" />`r`n"
+  $vcxprojptests +=
+      "    <ClCompile Include=`"$msvcrelativepbccpath`" />`r`n"
 }
 Get-ChildItem "$dir\editions\input\*" -Include *.proto | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\editions\\", "..\..\editions\"
+  $msvcrelativepbhpath = $msvcrelativepath -replace "\.proto", ".pb.h"
+  $msvcrelativepbccpath = $msvcrelativepath -replace "\.proto", ".pb.cc"
   $filtersptests +=
       "     <CustomBuild Include=`"$msvcrelativepath`">`r`n" +
       "        <Filter>Proto Files</Filter>`r`n" +
       "     </CustomBuild>`r`n"
+  $filtersptests +=
+      "    <ClInclude Include=`"$msvcrelativepbhpath`">`r`n" +
+      "       <Filter>Generated Header Files</Filter>`r`n" +
+      "    </ClInclude>`r`n"
+  $filtersptests +=
+      "    <ClCompile Include=`"$msvcrelativepbccpath`">`r`n" +
+      "       <Filter>Generated Source Files</Filter>`r`n" +
+      "    </ClCompile>`r`n"
   $vcxprojptests +=
       "    <CustomBuild Include=`"$msvcrelativepath`">`r`n" +
-      "       <Command>`"`$(OutDir)protoc`" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) `"%(Identity)`"</Command>`r`n" +
+      "       <Command>`"`$(OutDir)protoc`" --proto_path=..\.. -I..\.. -I..\..\src --cpp_out=..\.. `"%(Identity)`"</Command>`r`n" +
       "       <Message>Generating C++ files for %(FullPath)</Message>`r`n" +
       "       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>`r`n" +
       "    </CustomBuild>`r`n"
+  $vcxprojptests +=
+      "    <ClInclude Include=`"$msvcrelativepbhpath`" />`r`n"
+  $vcxprojptests +=
+      "    <ClCompile Include=`"$msvcrelativepbccpath`" />`r`n"
 }
 $filtersptests += "  </ItemGroup>`r`n"
 $vcxprojptests += "  </ItemGroup>`r`n"

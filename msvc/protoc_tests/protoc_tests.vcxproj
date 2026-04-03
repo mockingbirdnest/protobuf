@@ -23,9 +23,6 @@
     <ClCompile Include="..\..\src\google\protobuf\compiler\retention_unittest.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\test_plugin.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\versions_test.cc" />
-    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_editions.pb.h" />
-    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_proto2.pb.h" />
-    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\test_large_enum_value.pb.h" />
     <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\unittest.h" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\arena_ctor_visibility_test.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\bootstrap_unittest.cc" />
@@ -39,9 +36,6 @@
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\move_unittest.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\namespace_printer_unittest.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\plugin_unittest.cc" />
-    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_editions.pb.cc" />
-    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_proto2.pb.cc" />
-    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\test_large_enum_value.pb.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\unittest.cc" />
     <ClInclude Include="..\..\editions\edition_defaults_test_utils.h" />
     <ClCompile Include="..\..\editions\defaults_test.cc" />
@@ -54,305 +48,425 @@
     <ClCompile Include="..\..\src\google\protobuf\testing\file.cc" />
     <ClCompile Include="..\..\src\google\protobuf\testing\googletest.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\edition_unittest.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\edition_unittest.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\edition_unittest.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\map_lite_unittest.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\map_lite_unittest.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\map_lite_unittest.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\map_proto2_unittest.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\map_proto2_unittest.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\map_proto2_unittest.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\map_proto3_unittest.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\map_proto3_unittest.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\map_proto3_unittest.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\map_unittest.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\map_unittest.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\map_unittest.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_arena.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_arena.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_arena.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_custom_features.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_custom_features.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_custom_features.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_custom_options_unlinked.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_custom_options_unlinked.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_custom_options_unlinked.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_custom_options.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_custom_options.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_custom_options.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_delimited_import.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_delimited_import.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_delimited_import.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_delimited.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_delimited.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_delimited.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_drop_unknown_fields.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_drop_unknown_fields.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_drop_unknown_fields.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_embed_optimize_for.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_embed_optimize_for.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_embed_optimize_for.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_empty.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_empty.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_empty.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_enormous_descriptor.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_enormous_descriptor.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_enormous_descriptor.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_extension_set.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_extension_set.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_extension_set.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_features.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_features.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_features.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_fuzz_extensions.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_fuzz_extensions.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_fuzz_extensions.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_import_lite.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_import_lite.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_import_lite.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_import_option.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_import_option.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_import_option.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_import_public_lite.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_import_public_lite.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_import_public_lite.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_import_public.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_import_public.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_import_public.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_import.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_import.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_import.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_invalid_features.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_invalid_features.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_invalid_features.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_lazy_dependencies_custom_option.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_lazy_dependencies_custom_option.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_lazy_dependencies_custom_option.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_lazy_dependencies_enum.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_lazy_dependencies_enum.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_lazy_dependencies_enum.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_lazy_dependencies.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_lazy_dependencies.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_lazy_dependencies.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_lite_edition_2024.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_lite_edition_2024.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_lite_edition_2024.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_lite_imports_nonlite.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_lite_imports_nonlite.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_lite_imports_nonlite.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_lite.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_lite.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_lite.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_mset_wire_format.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_mset_wire_format.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_mset_wire_format.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_mset.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_mset.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_mset.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_no_field_presence.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_no_field_presence.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_no_field_presence.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_no_generic_services.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_no_generic_services.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_no_generic_services.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_optimize_for.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_optimize_for.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_optimize_for.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_preserve_unknown_enum.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_preserve_unknown_enum.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_preserve_unknown_enum.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_preserve_unknown_enum2.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_preserve_unknown_enum2.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_preserve_unknown_enum2.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_proto3_arena_lite.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_proto3_arena_lite.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_proto3_arena_lite.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_proto3_arena.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_proto3_arena.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_proto3_arena.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_proto3_bad_macros.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_proto3_bad_macros.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_proto3_bad_macros.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_proto3_extensions.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_proto3_extensions.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_proto3_extensions.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_proto3_lite.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_proto3_lite.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_proto3_lite.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_proto3_optional.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_proto3_optional.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_proto3_optional.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_proto3.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_proto3.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_proto3.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_redaction.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_redaction.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_redaction.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_retention.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_retention.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_retention.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_string_type.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_string_type.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_string_type.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_string_view.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_string_view.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_string_view.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_utf8_string_extensions.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_utf8_string_extensions.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_utf8_string_extensions.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_well_known_types.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest_well_known_types.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest_well_known_types.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\unittest.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\unittest.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_editions.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_editions.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_editions.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_proto2.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_proto2.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\test_bad_identifiers_proto2.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\compiler\cpp\test_large_enum_value.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\src\google\protobuf\compiler\cpp\test_large_enum_value.pb.h" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\test_large_enum_value.pb.cc" />
     <CustomBuild Include="..\..\editions\golden\simple_proto2_import.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\.. -I..\.. -I..\..\src --cpp_out=..\.. "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\editions\golden\simple_proto2_import.pb.h" />
+    <ClCompile Include="..\..\editions\golden\simple_proto2_import.pb.cc" />
     <CustomBuild Include="..\..\editions\golden\simple_proto2.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\.. -I..\.. -I..\..\src --cpp_out=..\.. "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\editions\golden\simple_proto2.pb.h" />
+    <ClCompile Include="..\..\editions\golden\simple_proto2.pb.cc" />
     <CustomBuild Include="..\..\editions\golden\simple_proto3.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\.. -I..\.. -I..\..\src --cpp_out=..\.. "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\editions\golden\simple_proto3.pb.h" />
+    <ClCompile Include="..\..\editions\golden\simple_proto3.pb.cc" />
     <CustomBuild Include="..\..\editions\golden\test_messages_proto2_editions.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\.. -I..\.. -I..\..\src --cpp_out=..\.. "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\editions\golden\test_messages_proto2_editions.pb.h" />
+    <ClCompile Include="..\..\editions\golden\test_messages_proto2_editions.pb.cc" />
     <CustomBuild Include="..\..\editions\golden\test_messages_proto3_editions.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\.. -I..\.. -I..\..\src --cpp_out=..\.. "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\editions\golden\test_messages_proto3_editions.pb.h" />
+    <ClCompile Include="..\..\editions\golden\test_messages_proto3_editions.pb.cc" />
     <CustomBuild Include="..\..\editions\input\test_editions_default_features.proto">
-      <Command>"$(OutDir)protoc" --proto_path=%(RelativeDir) -I..\.. -I..\..\src --cpp_out=%(RelativeDir) "%(Identity)"</Command>
+      <Command>"$(OutDir)protoc" --proto_path=..\.. -I..\.. -I..\..\src --cpp_out=..\.. "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>
       <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
     </CustomBuild>
+    <ClInclude Include="..\..\editions\input\test_editions_default_features.pb.h" />
+    <ClCompile Include="..\..\editions\input\test_editions_default_features.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\protobuf\protobuf.vcxproj">
