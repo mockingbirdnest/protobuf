@@ -24,6 +24,7 @@
     <ClCompile Include="..\..\src\google\protobuf\compiler\code_generator.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\command_line_interface.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\importer.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\compiler\main.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\parser.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\plugin.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\plugin.pb.cc" />
@@ -57,7 +58,6 @@
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\generator.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\helpers.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\ifndef_guard.cc" />
-    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\main.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\message_layout_helper.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\message.cc" />
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\namespace_printer.cc" />

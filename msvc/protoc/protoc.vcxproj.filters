@@ -65,6 +65,9 @@
     <ClCompile Include="..\..\src\google\protobuf\compiler\importer.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\google\protobuf\compiler\main.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\google\protobuf\compiler\parser.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -162,9 +165,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\ifndef_guard.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\main.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\google\protobuf\compiler\cpp\message_layout_helper.cc">
