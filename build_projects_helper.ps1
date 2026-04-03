@@ -3,9 +3,11 @@
 # XML may just be inserted at the right place in the project files, replacing whatever was there.
 
 $dir = resolve-path $args[0]
-$testpattern = @("fake_*.*", "mock_*.*", "test_*.*", "*test_util*.*", "*_test.*", "*_tester.*", "*unittest.*")
-$benchmarkpattern = @("*_benchmark.*")
-$exclusionpattern = $testpattern + $benchmarkpattern
+$testheaderspattern = @("fake_*.h", "mock_*.h", "test_*.h", "*test_util*.h", "*_test.h", "*_tester.h", "*unittest.h")
+$testsourcespattern = @("fake_*.c*", "mock_*.c*", "test_*.c*", "*test_util*.c*", "*_test.c*", "*_tester.c*", "*unittest.c*")
+$benchmarkheaderspattern = @("*_benchmark.h")
+$benchmarksourcespattern = @("*_benchmark.c*")
+$exclusionpattern = $testheaderspattern + $testsourcespattern + $benchmarkheaderspattern + $benchmarksourcespattern
 
 $filtersheaders = "  <ItemGroup>`r`n"
 $vcxprojheaders = "  <ItemGroup>`r`n"
@@ -167,6 +169,31 @@ Foreach-Object {
 $filtersprotoc += "  </ItemGroup>`r`n"
 $vcxprojprotoc += "  </ItemGroup>`r`n"
 
+$filtersbenchmarks = "  <ItemGroup>`r`n"
+$vcxprojbenchmarks = "  <ItemGroup>`r`n"
+Get-ChildItem "$dir\src\google\protobuf\*" -Include $benchmarkheaderspattern | `
+Foreach-Object {
+  $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
+  $filtersbenchmarks +=
+      "    <ClInclude Include=`"$msvcrelativepath`">`r`n" +
+      "       <Filter>Header Files</Filter>`r`n" +
+      "    </ClInclude>`r`n"
+  $vcxprojbenchmarks +=
+      "    <ClInclude Include=`"$msvcrelativepath`" />`r`n"
+}
+Get-ChildItem "$dir\src\google\protobuf\*" -Include $benchmarksourcespattern | `
+Foreach-Object {
+  $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
+  $filtersbenchmarks +=
+      "    <ClCompile Include=`"$msvcrelativepath`">`r`n" +
+      "       <Filter>Source Files</Filter>`r`n" +
+      "    </ClCompile>`r`n"
+  $vcxprojbenchmarks +=
+      "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
+}
+$filtersbenchmarks += "  </ItemGroup>`r`n"
+$vcxprojbenchmarks += "  </ItemGroup>`r`n"
+
 $dirfilterspath = [string]::format("{0}/protobuf_vcxproj_filters.txt", $dir)
 [system.io.file]::writealltext(
     $dirfilterspath,
@@ -179,6 +206,12 @@ $protocfilterspath = [string]::format("{0}/protoc_vcxproj_filters.txt", $dir)
     $filtersprotoc,
     [system.text.encoding]::utf8)
 
+$benchmarksfilterspath = [string]::format("{0}/benchmarks_vcxproj_filters.txt", $dir)
+[system.io.file]::writealltext(
+    $benchmarksfilterspath,
+    $filtersbenchmarks,
+    [system.text.encoding]::utf8)
+
 $dirvcxprojpath = [string]::format("{0}/protobuf_vcxproj.txt", $dir)
 [system.io.file]::writealltext(
     $dirvcxprojpath,
@@ -189,4 +222,10 @@ $protocvcxprojpath = [string]::format("{0}/protoc_vcxproj.txt", $dir)
 [system.io.file]::writealltext(
     $protocvcxprojpath,
     $vcxprojprotoc,
+    [system.text.encoding]::utf8)
+
+$benchmarksvcxprojpath = [string]::format("{0}/benchmarks_vcxproj.txt", $dir)
+[system.io.file]::writealltext(
+    $benchmarksvcxprojpath,
+    $vcxprojbenchmarks,
     [system.text.encoding]::utf8)

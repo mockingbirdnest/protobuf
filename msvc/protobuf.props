@@ -23,7 +23,7 @@
   <PropertyGroup>
     <!--Special projects.  Must default to true for Clang Power Tools to get the includes right.-->
     <PrincipiaBenchmarkProject>true</PrincipiaBenchmarkProject>
-    <PrincipiaBenchmarkProject Condition="$(ProjectName) != no_such_project">false</PrincipiaBenchmarkProject>
+    <PrincipiaBenchmarkProject Condition="$(ProjectName) != benchmarks">false</PrincipiaBenchmarkProject>
     <PrincipiaTestProject>true</PrincipiaTestProject>
     <PrincipiaTestProject Condition="$(ProjectName) != no_such_project">false</PrincipiaTestProject>
     <!--Predicates.-->
@@ -130,9 +130,7 @@
   </ImportGroup>
 
   <ImportGroup Condition="$(PrincipiaBenchmarkProject)">
-    <Import Project="$(SolutionDir)..\..\benchmark\msvc\portability_macros.props" />
-    <Import Project="$(SolutionDir)..\..\benchmark\msvc\windows_libraries.props" />
-    <Import Project="$(SolutionDir)google_benchmark.props" />
+    <!--This does use Google benchmark.-->
   </ImportGroup>
 
   <ImportGroup Condition="$(PrincipiaTestProject)">

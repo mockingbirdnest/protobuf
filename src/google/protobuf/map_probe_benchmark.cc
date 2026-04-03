@@ -41,8 +41,7 @@ struct MapBenchmarkPeer {
     return total_probe_cost / map.size();
   }
 };
-}  // namespace protobuf
-}  // namespace google::internal
+}  // namespace google::protobuf::internal
 
 namespace {
 
@@ -248,7 +247,7 @@ void RunForType(std::vector<Result>& results) {
 
 }  // namespace
 
-int main(int argc, char** argv) {
+int __cdecl main(int argc, char** argv) {
   std::vector<Result> results;
   RunForType<uint64_t>(results);
   RunForType<String<true>>(results);
