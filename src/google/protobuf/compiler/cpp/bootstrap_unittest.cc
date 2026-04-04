@@ -22,6 +22,7 @@
 #include <memory>
 #include <string>
 
+#include "absl/strings/str_replace.h"
 #include "google/protobuf/testing/file.h"
 #include "google/protobuf/testing/file.h"
 #include "google/protobuf/compiler/cpp/generator.h"
@@ -85,6 +86,13 @@ class MockGeneratorContext : public GeneratorContext {
                                     true));
     ABSL_CHECK_OK(
         File::SetContents("/tmp/actual.cc", actual_contents, true));
+#endif
+
+// Strip the \r on Windows to avoid bogus mismatches due to line ending
+// differences.
+#ifdef _MSC_VER
+    actual_contents = absl::StrReplaceAll(actual_contents, {{"\r", ""}});
+    expected_contents = absl::StrReplaceAll(expected_contents, {{"\r", ""}});
 #endif
 
     ASSERT_EQ(expected_contents, actual_contents)

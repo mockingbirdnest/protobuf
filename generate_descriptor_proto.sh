@@ -7,7 +7,7 @@
 # generate.
 #
 # HINT:  Flags passed to generate_descriptor_proto.sh will be passed directly
-#   to make when building protoc.  This is particularly useful for passing
+#   to bazel when building protoc.  This is particularly useful for passing
 #   -j4 to run 4 jobs simultaneously.
 
 if test ! -e src/google/protobuf/stubs/common.h; then
@@ -23,6 +23,7 @@ cd src
 declare -a RUNTIME_PROTO_FILES=(\
   google/protobuf/any.proto \
   google/protobuf/api.proto \
+  google/protobuf/cpp_features.proto \
   google/protobuf/descriptor.proto \
   google/protobuf/duration.proto \
   google/protobuf/empty.proto \
@@ -63,7 +64,7 @@ do
     PROTOC=$BOOTSTRAP_PROTOC
     BOOTSTRAP_PROTOC=""
   else
-    PROTOC="../vsprojects/Debug/Win32/protoc.exe"
+    PROTOC="../msvc/Debug/x64/protoc.exe"
   fi
 
   $PROTOC --cpp_out=dllexport_decl=PROTOBUF_EXPORT:$TMP ${RUNTIME_PROTO_FILES[@]} && \
@@ -71,11 +72,11 @@ do
 
   for PROTO_FILE in ${RUNTIME_PROTO_FILES[@]} ${COMPILER_PROTO_FILES[@]}; do
     BASE_NAME=${PROTO_FILE%.*}
-    diff ${BASE_NAME}.pb.h $TMP/${BASE_NAME}.pb.h > /dev/null
+    diff --strip-trailing-cr ${BASE_NAME}.pb.h $TMP/${BASE_NAME}.pb.h > /dev/null
     if test $? -ne 0; then
       CORE_PROTO_IS_CORRECT=0
     fi
-    diff ${BASE_NAME}.pb.cc $TMP/${BASE_NAME}.pb.cc > /dev/null
+    diff --strip-trailing-cr ${BASE_NAME}.pb.cc $TMP/${BASE_NAME}.pb.cc > /dev/null
     if test $? -ne 0; then
       CORE_PROTO_IS_CORRECT=0
     fi
@@ -83,13 +84,15 @@ do
 
   # Only override the output if the files are different to avoid re-compilation
   # of the protoc.
-  if [ $CORE_PROTO_IS_CORRECT -ne 1 ]; then
-    for PROTO_FILE in ${RUNTIME_PROTO_FILES[@]} ${COMPILER_PROTO_FILES[@]}; do
-      BASE_NAME=${PROTO_FILE%.*}
-      mv $TMP/${BASE_NAME}.pb.h ${BASE_NAME}.pb.h
-      mv $TMP/${BASE_NAME}.pb.cc ${BASE_NAME}.pb.cc
-    done
-  fi
+  for PROTO_FILE in ${RUNTIME_PROTO_FILES[@]} ${COMPILER_PROTO_FILES[@]}; do
+    BASE_NAME=${PROTO_FILE%.*}
+    if [ $CORE_PROTO_IS_CORRECT -ne 1 ]; then
+      unix2dos < $TMP/${BASE_NAME}.pb.h > ${BASE_NAME}.pb.h
+      unix2dos < $TMP/${BASE_NAME}.pb.cc > ${BASE_NAME}.pb.cc
+    fi
+    rm $TMP/${BASE_NAME}.pb.h
+    rm $TMP/${BASE_NAME}.pb.cc
+  done
 
   PROCESS_ROUND=$((PROCESS_ROUND + 1))
 done
