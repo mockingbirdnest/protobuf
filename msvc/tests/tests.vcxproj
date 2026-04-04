@@ -651,6 +651,9 @@
     <ProjectReference Include="..\protobuf\protobuf.vcxproj">
       <Project>{5def5565-8b55-40b1-9835-3e724e1cf99b}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\protoc\protoc.vcxproj">
+      <Project>{13226013-9f27-41f8-b98f-ea671f23f7d2}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\protoc_lib\protoc_lib.vcxproj">
       <Project>{455d97e9-47c7-46cd-ad99-725fb304d453}</Project>
     </ProjectReference>
