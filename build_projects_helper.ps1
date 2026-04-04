@@ -398,7 +398,8 @@ Foreach-Object {
   $vcxprojtests +=
       "    <ClCompile Include=`"$msvcrelativepath`" />`r`n"
 }
-Get-ChildItem "$dir\src\google\protobuf\*" -Include *test*.proto -Exclude unittest_legacy_features.proto | `
+Get-ChildItem "$dir\src\google\protobuf\*" -Include *test*.proto `
+  -Exclude unittest_custom_options_unlinked.proto,unittest_legacy_features.proto | `
 Foreach-Object {
   $msvcrelativepath = $_.FullName -replace ".*\\src\\", "..\..\src\"
   $msvcrelativepbhpath = $msvcrelativepath -replace "\.proto", ".pb.h"

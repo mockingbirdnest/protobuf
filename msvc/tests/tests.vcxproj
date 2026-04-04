@@ -219,13 +219,6 @@
     </CustomBuild>
     <ClInclude Include="..\..\src\google\protobuf\unittest_custom_features.pb.h" />
     <ClCompile Include="..\..\src\google\protobuf\unittest_custom_features.pb.cc" />
-    <CustomBuild Include="..\..\src\google\protobuf\unittest_custom_options_unlinked.proto">
-      <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
-      <Message>Generating C++ files for %(FullPath)</Message>
-      <Outputs>%(RootDir)%(Directory)%(Filename).pb.h;%(RootDir)%(Directory)%(Filename).pb.cc;%(Outputs)</Outputs>
-    </CustomBuild>
-    <ClInclude Include="..\..\src\google\protobuf\unittest_custom_options_unlinked.pb.h" />
-    <ClCompile Include="..\..\src\google\protobuf\unittest_custom_options_unlinked.pb.cc" />
     <CustomBuild Include="..\..\src\google\protobuf\unittest_custom_options.proto">
       <Command>"$(OutDir)protoc" --proto_path=..\..\src -I..\.. -I..\..\src --cpp_out=..\..\src "%(Identity)"</Command>
       <Message>Generating C++ files for %(FullPath)</Message>

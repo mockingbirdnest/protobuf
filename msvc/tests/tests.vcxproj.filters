@@ -508,15 +508,6 @@
     <ClCompile Include="..\..\src\google\protobuf\unittest_custom_features.pb.cc">
       <Filter>Generated Source Files</Filter>
     </ClCompile>
-    <CustomBuild Include="..\..\src\google\protobuf\unittest_custom_options_unlinked.proto">
-      <Filter>Proto Files</Filter>
-    </CustomBuild>
-    <ClInclude Include="..\..\src\google\protobuf\unittest_custom_options_unlinked.pb.h">
-      <Filter>Generated Header Files</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\src\google\protobuf\unittest_custom_options_unlinked.pb.cc">
-      <Filter>Generated Source Files</Filter>
-    </ClCompile>
     <CustomBuild Include="..\..\src\google\protobuf\unittest_custom_options.proto">
       <Filter>Proto Files</Filter>
     </CustomBuild>
