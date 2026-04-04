@@ -95,6 +95,10 @@ constexpr absl::string_view value_replacement = "\\[REDACTED\\]";
 
 constexpr absl::string_view kTextMarkerRegex = "goo\\.gle/.+  +";
 
+std::string Dos2Unix(std::string const& s) {
+  return absl::StrReplaceAll(s, {{"\r", ""}});
+}
+
 class TextFormatTestBase : public testing::Test {
  public:
   void SetUp() override {
@@ -158,14 +162,14 @@ TEST_F(TextFormatTest, Basic) {
   TestUtil::SetAllFields(&proto_);
   std::string actual_proto_text_format;
   ASSERT_TRUE(TextFormat::PrintToString(proto_, &actual_proto_text_format));
-  EXPECT_EQ(actual_proto_text_format, proto_text_format_);
+  EXPECT_EQ(Dos2Unix(actual_proto_text_format), Dos2Unix(proto_text_format_));
 }
 
 TEST_F(TextFormatExtensionsTest, Extensions) {
   TestUtil::SetAllExtensions(&proto_);
   std::string actual_proto_text_format;
   ASSERT_TRUE(TextFormat::PrintToString(proto_, &actual_proto_text_format));
-  EXPECT_EQ(actual_proto_text_format, proto_text_format_);
+  EXPECT_EQ(Dos2Unix(actual_proto_text_format), Dos2Unix(proto_text_format_));
 }
 
 TEST_F(TextFormatTest, ShortDebugString) {
