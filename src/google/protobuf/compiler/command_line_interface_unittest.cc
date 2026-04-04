@@ -9,6 +9,9 @@
 //  Based on original Protocol Buffers design by
 //  Sanjay Ghemawat, Jeff Dean, and others.
 
+// This depends on the test/fake plugins, which are annoying to build (would
+// require separate projects).
+#ifndef PRINCIPIA
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -5748,3 +5751,4 @@ INSTANTIATE_TEST_SUITE_P(FileDescriptorSetSource, EncodeDecodeTest,
 }  // namespace compiler
 }  // namespace protobuf
 }  // namespace google
+#endif  // PRINCIPIA
