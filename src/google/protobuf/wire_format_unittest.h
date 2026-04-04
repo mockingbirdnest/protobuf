@@ -808,7 +808,7 @@ TYPED_TEST_P(WireFormatTest, ParseFailMalformedMessageSet) {
 
     EXPECT_TRUE(message_set.SerializeToString(&data));
     // Make the proto mal-formed.
-    data[data.size() - 2 - kDepth] = 0xFF;
+    data[data.size() - 2 - kDepth] = static_cast<char>(0xFF);
   }
 
   typename TestFixture::TestMessageSet message_set;
@@ -843,7 +843,7 @@ TYPED_TEST_P(WireFormatTest, ParseFailMalformedMessageSetReverseOrder) {
   }
 
   // Make varint for -1 malformed.
-  data[data.size() - 5 * (kDepth + 1) - 4] = 0xFF;
+  data[data.size() - 5 * (kDepth + 1) - 4] = static_cast<char>(0xFF);
 
   typename TestFixture::TestMessageSet message_set;
   EXPECT_FALSE(message_set.ParseFromString(data));

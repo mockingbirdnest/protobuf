@@ -421,7 +421,7 @@ TEST(MESSAGE_TEST_NAME, ExplicitLazyBadLengthDelimitedSize) {
   serialized.push_back(tag);
 
   // To trigger this bug, we need an overlong size.
-  serialized.append(5, 0xff);
+  serialized.append(5, static_cast<char>(0xff));
 
   UNITTEST::TestLazyMessage parsed;
   EXPECT_FALSE(parsed.ParseFromString(serialized));
@@ -550,7 +550,7 @@ TEST(MESSAGE_TEST_NAME, ParseFailsIfWireMalformed) {
   EXPECT_TRUE(p.ParseFromString(serialized));
 
   // Overwriting the last byte to 0xFF results in malformed wire.
-  serialized[serialized.size() - 1] = 0xFF;
+  serialized[serialized.size() - 1] = static_cast<char>(0xFF);
   EXPECT_FALSE(p.ParseFromString(serialized));
 }
 
@@ -571,7 +571,7 @@ TEST(MESSAGE_TEST_NAME, ParseFailsIfOneofWireMalformed) {
   EXPECT_TRUE(p.ParseFromString(serialized));
 
   // Overwriting the last byte to 0xFF results in malformed wire.
-  serialized[serialized.size() - 1] = 0xFF;
+  serialized[serialized.size() - 1] = static_cast<char>(0xFF);
   EXPECT_FALSE(p.ParseFromString(serialized));
 }
 
@@ -590,7 +590,7 @@ TEST(MESSAGE_TEST_NAME, ParseFailsIfExtensionWireMalformed) {
   EXPECT_TRUE(p.ParseFromString(serialized));
 
   // Overwriting the last byte to 0xFF results in malformed wire.
-  serialized[serialized.size() - 1] = 0xFF;
+  serialized[serialized.size() - 1] = static_cast<char>(0xFF);
   EXPECT_FALSE(p.ParseFromString(serialized));
 }
 
@@ -608,7 +608,7 @@ TEST(MESSAGE_TEST_NAME, ParseFailsIfGroupFieldMalformed) {
   // Should parse correctly.
   ASSERT_TRUE(parsed.ParseFromString(data));
   // Overwriting the last byte of varint (-1) to 0xFF results in malformed wire.
-  data[data.size() - 2] = 0xFF;
+  data[data.size() - 2] = static_cast<char>(0xFF);
 
   EXPECT_FALSE(parsed.ParseFromString(data));
 }
@@ -626,7 +626,7 @@ TEST(MESSAGE_TEST_NAME, ParseFailsIfRepeatedGroupFieldMalformed) {
   // Should parse correctly.
   ASSERT_TRUE(parsed.ParseFromString(data));
   // Overwriting the last byte of varint (-1) to 0xFF results in malformed wire.
-  data[data.size() - 2] = 0xFF;
+  data[data.size() - 2] = static_cast<char>(0xFF);
 
   EXPECT_FALSE(parsed.ParseFromString(data));
 }
@@ -644,7 +644,7 @@ TEST(MESSAGE_TEST_NAME, UninitializedAndMalformed) {
   EXPECT_FALSE(p1.IsInitialized());
 
   // Overwriting the last byte to 0xFF results in malformed wire.
-  serialized[serialized.size() - 1] = 0xFF;
+  serialized[serialized.size() - 1] = static_cast<char>(0xFF);
   EXPECT_FALSE(p2.ParseFromString(serialized));
   EXPECT_FALSE(p2.IsInitialized());
 }
@@ -704,7 +704,7 @@ TEST(MESSAGE_TEST_NAME, SuccessAfterParsingFailure) {
   EXPECT_TRUE(p.ParseFromString(serialized));
 
   // Overwriting the last byte to 0xFF results in malformed wire.
-  serialized[serialized.size() - 1] = 0xFF;
+  serialized[serialized.size() - 1] = static_cast<char>(0xFF);
   EXPECT_FALSE(p.ParseFromString(serialized));
 
   // If the affected byte is inside a lazy message, we have no guarantee that it

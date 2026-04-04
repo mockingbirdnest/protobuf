@@ -4279,7 +4279,7 @@ TEST(CustomOptions, OptionTypes) {
 
   options = &proto2_unittest::CustomOptionOtherValues::descriptor()->options();
   EXPECT_EQ(-100, options->GetExtension(proto2_unittest::int32_opt));
-  EXPECT_FLOAT_EQ(12.3456789,
+  EXPECT_FLOAT_EQ(12.3456789f,
                   options->GetExtension(proto2_unittest::float_opt));
   EXPECT_DOUBLE_EQ(1.234567890123456789,
                    options->GetExtension(proto2_unittest::double_opt));

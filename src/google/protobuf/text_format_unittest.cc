@@ -1535,16 +1535,16 @@ TEST_F(TextFormatTest, PrintFloatPrecision) {
   unittest::TestAllTypes message;
 
   message.add_repeated_float(1.0);
-  message.add_repeated_float(1.2);
-  message.add_repeated_float(1.23);
-  message.add_repeated_float(1.234);
-  message.add_repeated_float(1.2345);
-  message.add_repeated_float(1.23456);
+  message.add_repeated_float(1.2f);
+  message.add_repeated_float(1.23f);
+  message.add_repeated_float(1.234f);
+  message.add_repeated_float(1.2345f);
+  message.add_repeated_float(1.23456f);
   message.add_repeated_float(1.2e10);
-  message.add_repeated_float(1.23e10);
-  message.add_repeated_float(1.234e10);
-  message.add_repeated_float(1.2345e10);
-  message.add_repeated_float(1.23456e10);
+  message.add_repeated_float(1.23e10f);
+  message.add_repeated_float(1.234e10f);
+  message.add_repeated_float(1.2345e10f);
+  message.add_repeated_float(1.23456e10f);
   message.add_repeated_double(1.2);
   message.add_repeated_double(1.23);
   message.add_repeated_double(1.234);
@@ -1713,7 +1713,7 @@ TEST_F(TextFormatTest, PrintFieldsInIndexOrder) {
   // Fields are listed in index order instead of field number.
   message.set_my_string("str");  // Field number 11
   message.set_my_int(12345);     // Field number 1
-  message.set_my_float(0.999);   // Field number 101
+  message.set_my_float(0.999f);   // Field number 101
   // Extensions are listed based on the order of extension number.
   // Extension number 12.
   message
@@ -2095,7 +2095,7 @@ TEST_F(TextFormatParserTest, ParseFieldValueFromString) {
   EXPECT_FIELD(float, 1, "1");
   EXPECT_FLOAT_FIELD(float, 1.5, "1.5");
   EXPECT_FLOAT_FIELD(float, 1.5e3, "1.5e3");
-  EXPECT_FLOAT_FIELD(float, -4.55, "-4.55");
+  EXPECT_FLOAT_FIELD(float, -4.55f, "-4.55");
   EXPECT_INVALID(float, "a");
   EXPECT_INVALID(float, "1,2");
 
