@@ -25,6 +25,7 @@
 #include <utility>
 #include <vector>
 
+#include "absl/strings/str_replace.h"
 #include "google/protobuf/testing/file.h"  // IWYU pragma: keep
 #include "google/protobuf/descriptor.pb.h"
 #include <gmock/gmock.h>
@@ -81,6 +82,10 @@ using UNITTEST::ForeignMessage;
 using UNITTEST::TestAllTypes;
 using UNITTEST::TestMap;
 using UNITTEST::TestRecursiveMapMessage;
+
+std::string Dos2Unix(std::string const& s) {
+  return absl::StrReplaceAll(s, {{"\r", ""}});
+}
 
 namespace internal {
 
@@ -4113,7 +4118,7 @@ TEST(TextFormatMapTest, DynamicMessage) {
 
   std::string actual_text;
   ASSERT_TRUE(TextFormat::PrintToString(*message, &actual_text));
-  EXPECT_EQ(actual_text, GetGoldenMessageTextProto());
+  EXPECT_EQ(Dos2Unix(actual_text), Dos2Unix(GetGoldenMessageTextProto()));
 }
 
 TEST(TextFormatMapTest, Sorted) {
@@ -4124,14 +4129,14 @@ TEST(TextFormatMapTest, Sorted) {
   TextFormat::Printer printer;
   std::string actual_text;
   ASSERT_TRUE(printer.PrintToString(message, &actual_text));
-  EXPECT_EQ(actual_text, GetGoldenMessageTextProto());
+  EXPECT_EQ(Dos2Unix(actual_text), Dos2Unix(GetGoldenMessageTextProto()));
 
   // Test again on the reverse order.
   UNITTEST::TestMap message2;
   tester.SetMapFieldsViaReflection(&message2);
   tester.SwapMapsViaReflection(&message2);
   ASSERT_TRUE(printer.PrintToString(message2, &actual_text));
-  EXPECT_EQ(actual_text, GetGoldenMessageTextProto());
+  EXPECT_EQ(Dos2Unix(actual_text), Dos2Unix(GetGoldenMessageTextProto()));
 }
 
 // Previously, serializing to text format will disable iterator from generated
