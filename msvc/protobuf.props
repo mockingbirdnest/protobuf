@@ -25,7 +25,8 @@
     <PrincipiaBenchmarkProject>true</PrincipiaBenchmarkProject>
     <PrincipiaBenchmarkProject Condition="$(ProjectName) != benchmarks">false</PrincipiaBenchmarkProject>
     <PrincipiaTestProject>true</PrincipiaTestProject>
-    <PrincipiaTestProject Condition="$(ProjectName) != protoc_tests">false</PrincipiaTestProject>
+    <PrincipiaTestProject Condition="$(ProjectName) != protoc_tests and
+                                     $(ProjectName) != tests">false</PrincipiaTestProject>
     <!--Predicates.-->
     <PrincipiaMainProject>false</PrincipiaMainProject>
     <PrincipiaMainProject Condition="$(PrincipiaBenchmarkProject) or
@@ -65,9 +66,10 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)..;$(SolutionDir)..\src;$(SolutionDir)..\third_party\utf8_range;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 /bigobj</AdditionalOptions>
       <CallingConvention>vectorcall</CallingConvention>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4003;4005;4018;4065;4068;4101;4146;4180;4244;4267;4624;4723;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4003;4005;4018;4065;4068;4101;4146;4180;4244;4267;4624;4723;4804;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
