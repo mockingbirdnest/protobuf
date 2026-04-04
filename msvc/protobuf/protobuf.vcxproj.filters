@@ -388,6 +388,54 @@
     <ClCompile Include="..\..\src\google\protobuf\stubs\common.cc">
       <Filter>Internal Files</Filter>
     </ClCompile>
+    <ClInclude Include="..\..\src\google\protobuf\util\delimited_message_util.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\google\protobuf\util\field_comparator.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\google\protobuf\util\field_mask_util.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\google\protobuf\util\internal_timeval.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\google\protobuf\util\json_util.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\google\protobuf\util\message_differencer.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\google\protobuf\util\package_info.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\google\protobuf\util\time_util.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\google\protobuf\util\type_resolver_util.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\google\protobuf\util\type_resolver.h">
+      <Filter>Internal Files</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\src\google\protobuf\util\delimited_message_util.cc">
+      <Filter>Internal Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\google\protobuf\util\field_comparator.cc">
+      <Filter>Internal Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\google\protobuf\util\field_mask_util.cc">
+      <Filter>Internal Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\google\protobuf\util\message_differencer.cc">
+      <Filter>Internal Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\google\protobuf\util\time_util.cc">
+      <Filter>Internal Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\google\protobuf\util\type_resolver_util.cc">
+      <Filter>Internal Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\google\protobuf\any_lite.cc">

@@ -132,6 +132,22 @@
     <ClInclude Include="..\..\src\google\protobuf\stubs\port.h" />
     <ClInclude Include="..\..\src\google\protobuf\stubs\status_macros.h" />
     <ClCompile Include="..\..\src\google\protobuf\stubs\common.cc" />
+    <ClInclude Include="..\..\src\google\protobuf\util\delimited_message_util.h" />
+    <ClInclude Include="..\..\src\google\protobuf\util\field_comparator.h" />
+    <ClInclude Include="..\..\src\google\protobuf\util\field_mask_util.h" />
+    <ClInclude Include="..\..\src\google\protobuf\util\internal_timeval.h" />
+    <ClInclude Include="..\..\src\google\protobuf\util\json_util.h" />
+    <ClInclude Include="..\..\src\google\protobuf\util\message_differencer.h" />
+    <ClInclude Include="..\..\src\google\protobuf\util\package_info.h" />
+    <ClInclude Include="..\..\src\google\protobuf\util\time_util.h" />
+    <ClInclude Include="..\..\src\google\protobuf\util\type_resolver_util.h" />
+    <ClInclude Include="..\..\src\google\protobuf\util\type_resolver.h" />
+    <ClCompile Include="..\..\src\google\protobuf\util\delimited_message_util.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\util\field_comparator.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\util\field_mask_util.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\util\message_differencer.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\util\time_util.cc" />
+    <ClCompile Include="..\..\src\google\protobuf\util\type_resolver_util.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\google\protobuf\any_lite.cc" />
