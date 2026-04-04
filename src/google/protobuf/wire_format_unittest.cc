@@ -63,7 +63,7 @@ TEST(RepeatedVarint, Int64) {
   // Insert -2^n, 2^n and 2^n-1.
   for (int n = 0; n < 10; n++) {
     v.Add(-(1 << n));
-    v.Add(1 << n);
+    v.Add(INT64_C(1) << n);
     v.Add((1 << n) - 1);
   }
 
@@ -101,7 +101,7 @@ TEST(RepeatedVarint, SInt64) {
   // Insert -2^n, 2^n and 2^n-1.
   for (int n = 0; n < 10; n++) {
     v.Add(-(1 << n));
-    v.Add(1 << n);
+    v.Add(INT64_C(1) << n);
     v.Add((1 << n) - 1);
   }
 
@@ -137,7 +137,7 @@ TEST(RepeatedVarint, UInt64) {
 
   // Insert 2^n and 2^n-1.
   for (int n = 0; n < 10; n++) {
-    v.Add(1 << n);
+    v.Add(INT64_C(1) << n);
     v.Add((1 << n) - 1);
   }
 

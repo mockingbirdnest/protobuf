@@ -47,7 +47,7 @@ class ChunkedString {
   // Resets the stream and runs the next pattern of splits.
   bool NextPattern() {
     pattern_ += skipped_patterns_;
-    if (pattern_ >= (1 << data_.size())) {
+    if (pattern_ >= (INT64_C(1) << data_.size())) {
       return false;
     }
     pattern_bit_idx_ = 0;

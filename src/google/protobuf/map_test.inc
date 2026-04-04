@@ -309,7 +309,7 @@ TEST_F(MapImplTest, UsageErrors) {
 
   MapValueRef value;
   EXPECT_DEATH(
-      value.SetFloatValue(0.1),
+      value.SetFloatValue(0.1f),
       testing::AnyOf(
         testing::HasSubstr(
           "Protocol Buffer map usage error:\n"
@@ -2760,7 +2760,7 @@ TEST(GeneratedMapFieldTest, ParseFailsIfMalformed) {
   EXPECT_TRUE(p.ParseFromString(serialized));
 
   // Overwriting the last byte to 0xFF results in malformed wire.
-  serialized[serialized.size() - 1] = 0xFF;
+  serialized[serialized.size() - 1] = static_cast<char>(0xFF);
   EXPECT_FALSE(p.ParseFromString(serialized));
 }
 
@@ -4025,7 +4025,7 @@ TEST(MapSerializationTest, Deterministic) {
     (*t.mutable_m_bool())[b] = inner;
     (*t.mutable_m_string())[s] = inner;
     (*t.mutable_m_string())[s + std::string(
-                                    1 << (u32 % static_cast<uint32_t>(9)), b)] =
+                                    UINT64_C(1) << (u32 % static_cast<uint32_t>(9)), b)] =
         inner;
     inner.mutable_m()->erase(i);
     frog = frog * multiplier + i;

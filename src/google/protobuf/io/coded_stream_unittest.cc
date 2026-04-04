@@ -1621,7 +1621,7 @@ class ReallyBigInputStream : public ZeroCopyInputStream {
   // address space otherwise. This will result in UB when
   // CodedInputStream::Refresh computes an out-of-bounds pointer by adding
   // INT_MAX (from case 1 above) but this is largely only a theoretical issue.
-  std::unique_ptr<char[], void (*)(void*)> buffer_{
+  std::unique_ptr<char[], void (__cdecl *)(void*)> buffer_{
       static_cast<char*>(calloc(sizeof(void*) > 4 ? INT_MAX : 1024, 1)), free};
   int64_t buffer_count_;
 };
