@@ -52,7 +52,8 @@ while [ $# -gt 0 ]; do
   esac
   shift
 done
-TMP=$(mktemp -d)
+TMP=tmp
+mkdir ${TMP}
 echo "Updating descriptor protos..."
 while [ $CORE_PROTO_IS_CORRECT -ne 1 ]
 do
@@ -63,12 +64,7 @@ do
     PROTOC=$BOOTSTRAP_PROTOC
     BOOTSTRAP_PROTOC=""
   else
-    ${BAZEL:-bazel} ${BAZEL_STARTUP_FLAGS:-} build $@ //:protoc ${BAZEL_FLAGS:-}
-    if test $? -ne 0; then
-      echo "Failed to build protoc."
-      exit 1
-    fi
-    PROTOC="../bazel-bin/protoc"
+    PROTOC="../msvc/Debug/x64/protoc.exe"
   fi
 
   $PROTOC --cpp_out=dllexport_decl=PROTOBUF_EXPORT:$TMP ${RUNTIME_PROTO_FILES[@]} && \
@@ -76,11 +72,11 @@ do
 
   for PROTO_FILE in ${RUNTIME_PROTO_FILES[@]} ${COMPILER_PROTO_FILES[@]}; do
     BASE_NAME=${PROTO_FILE%.*}
-    diff ${BASE_NAME}.pb.h $TMP/${BASE_NAME}.pb.h > /dev/null
+    diff --strip-trailing-cr ${BASE_NAME}.pb.h $TMP/${BASE_NAME}.pb.h > /dev/null
     if test $? -ne 0; then
       CORE_PROTO_IS_CORRECT=0
     fi
-    diff ${BASE_NAME}.pb.cc $TMP/${BASE_NAME}.pb.cc > /dev/null
+    diff --strip-trailing-cr ${BASE_NAME}.pb.cc $TMP/${BASE_NAME}.pb.cc > /dev/null
     if test $? -ne 0; then
       CORE_PROTO_IS_CORRECT=0
     fi
@@ -88,29 +84,16 @@ do
 
   # Only override the output if the files are different to avoid re-compilation
   # of the protoc.
-  if [ $CORE_PROTO_IS_CORRECT -ne 1 ]; then
-    for PROTO_FILE in ${RUNTIME_PROTO_FILES[@]} ${COMPILER_PROTO_FILES[@]}; do
-      BASE_NAME=${PROTO_FILE%.*}
-      mv $TMP/${BASE_NAME}.pb.h ${BASE_NAME}.pb.h
-      mv $TMP/${BASE_NAME}.pb.cc ${BASE_NAME}.pb.cc
-    done
-  fi
+  for PROTO_FILE in ${RUNTIME_PROTO_FILES[@]} ${COMPILER_PROTO_FILES[@]}; do
+    BASE_NAME=${PROTO_FILE%.*}
+    if [ $CORE_PROTO_IS_CORRECT -ne 1 ]; then
+      unix2dos < $TMP/${BASE_NAME}.pb.h > ${BASE_NAME}.pb.h
+      unix2dos < $TMP/${BASE_NAME}.pb.cc > ${BASE_NAME}.pb.cc
+    fi
+    rm $TMP/${BASE_NAME}.pb.h
+    rm $TMP/${BASE_NAME}.pb.cc
+  done
 
   PROCESS_ROUND=$((PROCESS_ROUND + 1))
 done
 cd ..
-
-if test -x objectivec/generate_well_known_types.sh; then
-  echo "Generating messages for objc."
-  objectivec/generate_well_known_types.sh $@
-fi
-
-if test -x csharp/generate_protos.sh; then
-  echo "Generating messages for C#."
-  csharp/generate_protos.sh $@
-fi
-
-if test -x php/generate_descriptor_protos.sh; then
-  echo "Generating messages for PHP."
-  php/generate_descriptor_protos.sh $@
-fi
