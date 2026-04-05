@@ -8,6 +8,7 @@
 #include "absl/log/initialize.h"
 #include "google/protobuf/compiler/command_line_interface.h"
 #include "google/protobuf/compiler/cpp/generator.h"
+#ifndef PRINCIPIA
 #include "google/protobuf/compiler/csharp/csharp_generator.h"
 #include "google/protobuf/compiler/java/generator.h"
 #include "google/protobuf/compiler/kotlin/generator.h"
@@ -18,6 +19,7 @@
 #include "google/protobuf/compiler/ruby/rbs_generator.h"
 #include "google/protobuf/compiler/ruby/ruby_generator.h"
 #include "google/protobuf/compiler/rust/generator.h"
+#endif  // PRINCIPIA
 #ifdef GOOGLE_PROTOBUF_RUNTIME_INCLUDE_BASE
 #include "google/protobuf/compiler/code_generator_lite.h"
 #endif
@@ -61,6 +63,7 @@ int ProtobufMain(int argc, char* argv[]) {
   cpp_generator.set_runtime_include_base(GOOGLE_PROTOBUF_RUNTIME_INCLUDE_BASE);
 #endif
 
+#ifndef PRINCIPIA
   // Proto2 Java
   java::JavaGenerator java_generator;
   cli.RegisterGenerator("--java_out", "--java_opt", &java_generator,
@@ -114,6 +117,7 @@ int ProtobufMain(int argc, char* argv[]) {
   rust::RustGenerator rust_generator;
   cli.RegisterGenerator("--rust_out", "--rust_opt", &rust_generator,
                         "Generate Rust sources.");
+#endif  // PRINCIPIA
 #ifdef DISABLE_PROTOC_CONFIG
   auto cleanup = internal::DisableAllowlistInternalOnly();
 #endif  // DISABLE_PROTOC_CONFIG
@@ -135,7 +139,7 @@ std::string ToMultiByteUtf8String(const wchar_t* input) {
   return result;
 }
 
-int main(int argc, char* argv[]) {
+int __cdecl main(int argc, char* argv[]) {
   wchar_t** wargv = CommandLineToArgvW(GetCommandLineW(), &argc);
   char** argv_mbcs = new char*[argc];
   for (int i = 0; i < argc; i++) {
