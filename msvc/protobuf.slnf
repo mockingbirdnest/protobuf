@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "protobuf.sln",
+    "projects": [
+      "protobuf\\protobuf.vcxproj",
+      "protoc\\protoc.vcxproj",
+      "protoc_lib\\protoc_lib.vcxproj",
+    ]
+  }
+}
