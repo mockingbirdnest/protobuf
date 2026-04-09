@@ -8,8 +8,9 @@ on:
   workflow_dispatch:
 
 env:
-  PRINCIPIA_HEADERS_PROTOBUF: src
-  PRINCIPIA_MSVC_PROTOBUF: vsprojects
+  PRINCIPIA_HEADERS_PROTOBUF: .
+  PRINCIPIA_MSVC_PROTOBUF: msvc
+  PRINCIPIA_SOLUTION_PROTOBUF: msvc/protobuf.slnf
 
 jobs:
   build:
@@ -26,23 +27,23 @@ jobs:
       with:
         configuration: ${{ matrix.configuration }}
 
-    - name: Download glog artifact
+    - name: Download abseil artifact
       uses: mockingbirdnest/actions/windows/download_artifact@main
       with:
-        name: glog
+        name: abseil-cpp
         configuration: ${{ matrix.configuration }}
 
-    - name: Download googletest artifact
+    - name: Download re2 artifact
       uses: mockingbirdnest/actions/windows/download_artifact@main
       with:
-        name: googletest
+        name: re2
         configuration: ${{ matrix.configuration }}
 
     - name: Rebuild ${{ matrix.configuration }}
       uses: mockingbirdnest/actions/windows/rebuild@main
       with:
         configuration: ${{ matrix.configuration }}
-        solution_directory: ${{ env.PRINCIPIA_MSVC_PROTOBUF }}
+        solution_glob: ${{ env.PRINCIPIA_SOLUTION_PROTOBUF }}
 
     - name: Upload artifact
       uses: mockingbirdnest/actions/windows/upload_artifact@main
