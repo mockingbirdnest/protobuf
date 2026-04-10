@@ -1,15 +1,12 @@
-./autogen.sh
-
-# NOTE(Norgg): Really definitely needs to run twice on Ubuntu for some reason.
-# See
-# https://github.com/mockingbirdnest/Principia/commit/8be8f78eee44f384e1658f546,
-# https://github.com/mockingbirdnest/Principia/commit/00f9d280a9054894dd22e1170.
-./autogen.sh
-
-./configure \
-    CC=clang \
-    CXX=clang++ \
-    CXXFLAGS="${CXX_FLAGS?}" \
-    LDFLAGS="${LD_FLAGS?}" \
-    LIBS="-lc++ -lc++abi"
+cmake \
+    -DCMAKE_C_COMPILER:FILEPATH=`which clang` \
+    -DCMAKE_CXX_COMPILER:FILEPATH=`which clang++` \
+    -DCMAKE_C_FLAGS="${C_FLAGS?}" \
+    -DCMAKE_CXX_FLAGS="${CXX_FLAGS?}" \
+    -DCMAKE_OSX_ARCHITECTURES="x86_64" \
+    -DCMAKE_OSX_DEPLOYMENT_TARGET="${OSX_DEPLOYMENT_TARGET}" \
+    -DCMAKE_LD_FLAGS="${LD_FLAGS?}" \
+    -DCMAKE_PREFIX_PATH=deps/abseil-cpp/install \
+    -Dprotobuf_LOCAL_DEPENDENCIES_ONLY=ON \
+    -Dprotobuf_WITH_ZLIB=OFF
 make -j8
